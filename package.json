@@ -1,0 +1,45 @@
+{
+  "name": "nas-blog-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "lint": "oxlint --type-aware . && eslint .",
+    "fmt": "oxfmt",
+    "test": "vitest",
+    "test:watch": "vitest --watch",
+    "test:coverage": "vitest --coverage",
+    "test:unit": "vitest --project unit",
+    "test:nuxt": "vitest --project nuxt",
+    "test:e2e": "vitest --project e2e"
+  },
+  "dependencies": {
+    "@nuxt/content": "^3.13.0",
+    "@nuxt/image": "2.0.0",
+    "@nuxt/test-utils": "4.0.2",
+    "@vueuse/nuxt": "^14.2.1",
+    "better-sqlite3": "^12.9.0",
+    "nuxt": "^4.4.2"
+  },
+  "devDependencies": {
+    "@nuxt/eslint": "1.15.2",
+    "@tailwindcss/vite": "^4.2.4",
+    "@vitest/coverage-v8": "^4.1.5",
+    "@vue/test-utils": "^2.4.8",
+    "eslint-plugin-oxlint": "^1.61.0",
+    "oxfmt": "^0.46.0",
+    "oxlint": "^1.61.0",
+    "tailwindcss": "^4.2.4",
+    "vitest": "^4.1.5",
+    "wrangler": "^4.85.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "better-sqlite3",
+      "sqlite3"
+    ]
+  }
+}
