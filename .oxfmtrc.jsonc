@@ -5,7 +5,7 @@
     "newlinesBetween": false,
   },
   "experimentalTailwindcss": {
-    "stylesheet": "./src/index.css",
+    "stylesheet": "./app/assets/css/ramune.css",
     "preserveDuplicates": true,
     "preserveWhitespace": true,
   },
