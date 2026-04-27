@@ -5,13 +5,20 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap");
 
+html {
+  scroll-behavior: smooth;
+}
+
 /* ── 1. Font stacks ─────────────────────────────────────────── */
 :root {
   --ram-font-display:
-    "Fredoka", "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+    "Fredoka", "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic",
+    sans-serif;
   --ram-font-body:
-    "DM Sans", "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", system-ui, sans-serif;
-  --ram-font-mono: "JetBrains Mono", "Menlo", "Consolas", "Noto Sans JP", monospace;
+    "DM Sans", "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic",
+    system-ui, sans-serif;
+  --ram-font-mono:
+    "JetBrains Mono", "Menlo", "Consolas", "Noto Sans JP", monospace;
 
   /* Spacing (4px baseline) */
   --ram-space-0: 0px;
@@ -77,7 +84,8 @@ html.ram-light {
   --ram-glass-highlight: rgba(255, 255, 255, 0.9);
 
   --ram-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
-  --ram-shadow-hover: 0 16px 48px rgba(0, 0, 0, 0.12), 0 4px 12px rgba(0, 0, 0, 0.06);
+  --ram-shadow-hover:
+    0 16px 48px rgba(0, 0, 0, 0.12), 0 4px 12px rgba(0, 0, 0, 0.06);
   --ram-shadow-focus: 0 0 0 3px rgba(0, 0, 0, 0.07);
 
   /* Glass code background */

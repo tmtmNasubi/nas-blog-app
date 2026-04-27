@@ -1,20 +1,26 @@
 <script setup lang="ts">
-interface Link {
+interface LinkItem {
   value: string;
   label: string;
+  to?: string;
+  href?: string;
+  external?: boolean;
 }
 
 const props = defineProps<{
   brand: string;
-  links: Array<string | Link>;
+  links: Array<string | LinkItem>;
   active?: string;
 }>();
 
 const emit = defineEmits<{ nav: [string] }>();
 
-const valueOf = (l: string | Link) => (typeof l === "string" ? l : l.value);
-const labelOf = (l: string | Link) => (typeof l === "string" ? l : l.label);
-const isActive = (l: string | Link) => valueOf(l) === props.active;
+const normalize = (l: string | LinkItem): LinkItem =>
+  typeof l === "string" ? { value: l, label: l } : l;
+
+const isActive = (l: string | LinkItem) => normalize(l).value === props.active;
+
+const onClick = (l: LinkItem) => emit("nav", l.value);
 </script>
 
 <template>
@@ -22,16 +28,47 @@ const isActive = (l: string | Link) => valueOf(l) === props.active;
     <div class="ram-topnav__backdrop" aria-hidden="true" />
     <div class="ram-topnav__left">
       <div class="ram-topnav__brand">{{ brand }}</div>
-      <nav class="ram-topnav__links">
-        <button
-          v-for="link in links"
-          :key="typeof link === 'string' ? link : link.value"
-          type="button"
-          :class="['ram-topnav__link', { 'ram-topnav__link--active': isActive(link) }]"
-          @click="emit('nav', valueOf(link))"
-        >
-          {{ labelOf(link) }}
-        </button>
+      <nav class="ram-topnav__links" aria-label="Primary">
+        <template v-for="raw in links" :key="normalize(raw).value">
+          <NuxtLink
+            v-if="normalize(raw).to"
+            :to="normalize(raw).to!"
+            :class="[
+              'ram-topnav__link',
+              { 'ram-topnav__link--active': isActive(raw) },
+            ]"
+            :aria-current="isActive(raw) ? 'page' : undefined"
+            @click="onClick(normalize(raw))"
+          >
+            {{ normalize(raw).label }}
+          </NuxtLink>
+          <a
+            v-else-if="normalize(raw).href"
+            :href="normalize(raw).href"
+            :class="[
+              'ram-topnav__link',
+              { 'ram-topnav__link--active': isActive(raw) },
+            ]"
+            :aria-current="isActive(raw) ? 'page' : undefined"
+            :target="normalize(raw).external ? '_blank' : undefined"
+            :rel="normalize(raw).external ? 'noopener noreferrer' : undefined"
+            @click="onClick(normalize(raw))"
+          >
+            {{ normalize(raw).label }}
+          </a>
+          <button
+            v-else
+            type="button"
+            :class="[
+              'ram-topnav__link',
+              { 'ram-topnav__link--active': isActive(raw) },
+            ]"
+            :aria-current="isActive(raw) ? 'page' : undefined"
+            @click="onClick(normalize(raw))"
+          >
+            {{ normalize(raw).label }}
+          </button>
+        </template>
       </nav>
     </div>
     <div class="ram-topnav__right">
@@ -107,6 +144,9 @@ const isActive = (l: string | Link) => valueOf(l) === props.active;
   border-radius: var(--ram-radius-pill);
   cursor: pointer;
   transition: all var(--ram-motion-fast);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
 }
 
 .ram-topnav__link:hover {
