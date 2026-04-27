@@ -27,4 +27,4 @@ pnpm-lock.yaml
 # Test coverage
 coverage/
 
-wrangler.*
+.wrangler/
