@@ -112,75 +112,82 @@ if (import.meta.client) {
       </button>
     </div>
 
-    <Teleport to="body">
-      <Transition name="ram-topnav-drawer">
-        <div v-if="isOpen" class="ram-topnav__overlay-wrap">
-          <div
-            class="ram-topnav__overlay"
-            aria-hidden="true"
-            @click="isOpen = false"
-          />
-          <div
-            id="ram-topnav-drawer"
-            class="ram-topnav__drawer"
-            role="dialog"
-            aria-modal="true"
-            aria-label="ナビゲーション"
-          >
-            <nav class="ram-topnav__drawer-links" aria-label="Primary mobile">
-              <template v-for="raw in links" :key="normalize(raw).value">
-                <NuxtLink
-                  v-if="normalize(raw).to"
-                  :to="normalize(raw).to!"
-                  :class="[
-                    'ram-topnav__drawer-link',
-                    {
-                      'ram-topnav__drawer-link--active': isActive(raw),
-                    },
-                  ]"
-                  :aria-current="isActive(raw) ? 'page' : undefined"
-                  @click="onClick(normalize(raw))"
-                >
-                  {{ normalize(raw).label }}
-                </NuxtLink>
-                <a
-                  v-else-if="normalize(raw).href"
-                  :href="normalize(raw).href"
-                  :class="[
-                    'ram-topnav__drawer-link',
-                    {
-                      'ram-topnav__drawer-link--active': isActive(raw),
-                    },
-                  ]"
-                  :aria-current="isActive(raw) ? 'page' : undefined"
-                  :target="normalize(raw).external ? '_blank' : undefined"
-                  :rel="
-                    normalize(raw).external ? 'noopener noreferrer' : undefined
-                  "
-                  @click="onClick(normalize(raw))"
-                >
-                  {{ normalize(raw).label }}
-                </a>
-                <button
-                  v-else
-                  type="button"
-                  :class="[
-                    'ram-topnav__drawer-link',
-                    {
-                      'ram-topnav__drawer-link--active': isActive(raw),
-                    },
-                  ]"
-                  :aria-current="isActive(raw) ? 'page' : undefined"
-                  @click="onClick(normalize(raw))"
-                >
-                  {{ normalize(raw).label }}
-                </button>
-              </template>
-            </nav>
+    <ClientOnly>
+      <Teleport to="body">
+        <Transition name="ram-topnav-drawer">
+          <div v-if="isOpen" class="ram-topnav__overlay-wrap">
+            <div
+              class="ram-topnav__overlay"
+              aria-hidden="true"
+              @click="isOpen = false"
+            />
+            <div
+              id="ram-topnav-drawer"
+              class="ram-topnav__drawer"
+              role="dialog"
+              aria-modal="true"
+              aria-label="ナビゲーション"
+            >
+              <nav
+                class="ram-topnav__drawer-links"
+                aria-label="Primary mobile"
+              >
+                <template v-for="raw in links" :key="normalize(raw).value">
+                  <NuxtLink
+                    v-if="normalize(raw).to"
+                    :to="normalize(raw).to!"
+                    :class="[
+                      'ram-topnav__drawer-link',
+                      {
+                        'ram-topnav__drawer-link--active': isActive(raw),
+                      },
+                    ]"
+                    :aria-current="isActive(raw) ? 'page' : undefined"
+                    @click="onClick(normalize(raw))"
+                  >
+                    {{ normalize(raw).label }}
+                  </NuxtLink>
+                  <a
+                    v-else-if="normalize(raw).href"
+                    :href="normalize(raw).href"
+                    :class="[
+                      'ram-topnav__drawer-link',
+                      {
+                        'ram-topnav__drawer-link--active': isActive(raw),
+                      },
+                    ]"
+                    :aria-current="isActive(raw) ? 'page' : undefined"
+                    :target="normalize(raw).external ? '_blank' : undefined"
+                    :rel="
+                      normalize(raw).external
+                        ? 'noopener noreferrer'
+                        : undefined
+                    "
+                    @click="onClick(normalize(raw))"
+                  >
+                    {{ normalize(raw).label }}
+                  </a>
+                  <button
+                    v-else
+                    type="button"
+                    :class="[
+                      'ram-topnav__drawer-link',
+                      {
+                        'ram-topnav__drawer-link--active': isActive(raw),
+                      },
+                    ]"
+                    :aria-current="isActive(raw) ? 'page' : undefined"
+                    @click="onClick(normalize(raw))"
+                  >
+                    {{ normalize(raw).label }}
+                  </button>
+                </template>
+              </nav>
+            </div>
           </div>
-        </div>
-      </Transition>
-    </Teleport>
+        </Transition>
+      </Teleport>
+    </ClientOnly>
   </div>
 </template>
 
