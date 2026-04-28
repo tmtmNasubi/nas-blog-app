@@ -201,6 +201,7 @@ if (import.meta.client) {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 8px;
   padding: 8px 14px;
   border: 1px solid var(--ram-glass-border);
   border-radius: var(--ram-radius-lg);
@@ -208,6 +209,8 @@ if (import.meta.client) {
   position: relative;
   isolation: isolate;
   overflow: hidden;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .ram-topnav__backdrop {
@@ -226,14 +229,18 @@ if (import.meta.client) {
   z-index: 1;
   display: flex;
   align-items: center;
+  min-width: 0;
 }
 
 .ram-topnav__left {
   gap: 16px;
+  flex: 1 1 auto;
+  overflow: hidden;
 }
 
 .ram-topnav__right {
   gap: 8px;
+  flex: 0 0 auto;
 }
 
 .ram-topnav__brand {
@@ -245,6 +252,10 @@ if (import.meta.client) {
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
 }
 
 .ram-topnav__links {

@@ -79,10 +79,12 @@ const typeVariants = [
         :active="topNavActive"
         @nav="topNavActive = $event"
       >
-        <RamButton variant="ghost" size="sm" @click="toggle">
-          {{ mode === "light" ? "🌙 Dark" : "☀️ Light" }}
-        </RamButton>
-        <RamButton variant="primary" size="sm">新規作成</RamButton>
+        <div class="preview__topnav-actions">
+          <RamButton variant="ghost" size="sm" @click="toggle">
+            {{ mode === "light" ? "🌙 Dark" : "☀️ Light" }}
+          </RamButton>
+          <RamButton variant="primary" size="sm">新規作成</RamButton>
+        </div>
       </RamTopNav>
 
       <header class="preview__header">
@@ -365,6 +367,18 @@ const typeVariants = [
   min-height: 100vh;
   isolation: isolate;
   overflow-x: hidden;
+}
+
+.preview__topnav-actions {
+  display: none;
+  align-items: center;
+  gap: 8px;
+}
+
+@media (min-width: 768px) {
+  .preview__topnav-actions {
+    display: flex;
+  }
 }
 
 .preview__inner {
