@@ -35,6 +35,11 @@ html {
   --ram-space-11: 80px;
   --ram-space-12: 120px;
 
+  /* Breakpoints (Tailwind 標準値に準拠 / 参照用) */
+  --ram-bp-sm: 640px;
+  --ram-bp-md: 768px;
+  --ram-bp-lg: 1024px;
+
   /* Radius */
   --ram-radius-none: 0;
   --ram-radius-xs: 6px;

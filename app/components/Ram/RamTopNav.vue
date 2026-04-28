@@ -20,7 +20,26 @@ const normalize = (l: string | LinkItem): LinkItem =>
 
 const isActive = (l: string | LinkItem) => normalize(l).value === props.active;
 
-const onClick = (l: LinkItem) => emit("nav", l.value);
+const isOpen = ref(false);
+
+const onClick = (l: LinkItem) => {
+  emit("nav", l.value);
+  isOpen.value = false;
+};
+
+if (import.meta.client) {
+  useEventListener(document, "keydown", (e: KeyboardEvent) => {
+    if (e.key === "Escape" && isOpen.value) isOpen.value = false;
+  });
+
+  watch(isOpen, (open) => {
+    document.body.style.overflow = open ? "hidden" : "";
+  });
+
+  onBeforeUnmount(() => {
+    document.body.style.overflow = "";
+  });
+}
 </script>
 
 <template>
@@ -73,7 +92,95 @@ const onClick = (l: LinkItem) => emit("nav", l.value);
     </div>
     <div class="ram-topnav__right">
       <slot />
+      <button
+        type="button"
+        class="ram-topnav__toggle"
+        :aria-expanded="isOpen"
+        aria-controls="ram-topnav-drawer"
+        :aria-label="isOpen ? 'メニューを閉じる' : 'メニューを開く'"
+        @click="isOpen = !isOpen"
+      >
+        <span
+          :class="['ram-topnav__bar', { 'ram-topnav__bar--open': isOpen }]"
+        />
+        <span
+          :class="['ram-topnav__bar', { 'ram-topnav__bar--open': isOpen }]"
+        />
+        <span
+          :class="['ram-topnav__bar', { 'ram-topnav__bar--open': isOpen }]"
+        />
+      </button>
     </div>
+
+    <Teleport to="body">
+      <Transition name="ram-topnav-drawer">
+        <div v-if="isOpen" class="ram-topnav__overlay-wrap">
+          <div
+            class="ram-topnav__overlay"
+            aria-hidden="true"
+            @click="isOpen = false"
+          />
+          <div
+            id="ram-topnav-drawer"
+            class="ram-topnav__drawer"
+            role="dialog"
+            aria-modal="true"
+            aria-label="ナビゲーション"
+          >
+            <nav class="ram-topnav__drawer-links" aria-label="Primary mobile">
+              <template v-for="raw in links" :key="normalize(raw).value">
+                <NuxtLink
+                  v-if="normalize(raw).to"
+                  :to="normalize(raw).to!"
+                  :class="[
+                    'ram-topnav__drawer-link',
+                    {
+                      'ram-topnav__drawer-link--active': isActive(raw),
+                    },
+                  ]"
+                  :aria-current="isActive(raw) ? 'page' : undefined"
+                  @click="onClick(normalize(raw))"
+                >
+                  {{ normalize(raw).label }}
+                </NuxtLink>
+                <a
+                  v-else-if="normalize(raw).href"
+                  :href="normalize(raw).href"
+                  :class="[
+                    'ram-topnav__drawer-link',
+                    {
+                      'ram-topnav__drawer-link--active': isActive(raw),
+                    },
+                  ]"
+                  :aria-current="isActive(raw) ? 'page' : undefined"
+                  :target="normalize(raw).external ? '_blank' : undefined"
+                  :rel="
+                    normalize(raw).external ? 'noopener noreferrer' : undefined
+                  "
+                  @click="onClick(normalize(raw))"
+                >
+                  {{ normalize(raw).label }}
+                </a>
+                <button
+                  v-else
+                  type="button"
+                  :class="[
+                    'ram-topnav__drawer-link',
+                    {
+                      'ram-topnav__drawer-link--active': isActive(raw),
+                    },
+                  ]"
+                  :aria-current="isActive(raw) ? 'page' : undefined"
+                  @click="onClick(normalize(raw))"
+                >
+                  {{ normalize(raw).label }}
+                </button>
+              </template>
+            </nav>
+          </div>
+        </div>
+      </Transition>
+    </Teleport>
   </div>
 </template>
 
@@ -82,7 +189,7 @@ const onClick = (l: LinkItem) => emit("nav", l.value);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 18px;
+  padding: 8px 14px;
   border: 1px solid var(--ram-glass-border);
   border-radius: var(--ram-radius-lg);
   box-shadow: var(--ram-shadow);
@@ -110,17 +217,17 @@ const onClick = (l: LinkItem) => emit("nav", l.value);
 }
 
 .ram-topnav__left {
-  gap: 24px;
+  gap: 16px;
 }
 
 .ram-topnav__right {
-  gap: 10px;
+  gap: 8px;
 }
 
 .ram-topnav__brand {
   font-family: var(--ram-font-display);
   font-weight: 700;
-  font-size: 18px;
+  font-size: 16px;
   background: linear-gradient(90deg, var(--ram-primary), var(--ram-sun));
   -webkit-background-clip: text;
   background-clip: text;
@@ -129,7 +236,7 @@ const onClick = (l: LinkItem) => emit("nav", l.value);
 }
 
 .ram-topnav__links {
-  display: flex;
+  display: none;
   gap: 2px;
 }
 
@@ -156,5 +263,158 @@ const onClick = (l: LinkItem) => emit("nav", l.value);
 .ram-topnav__link--active {
   background: var(--ram-glass-strong);
   color: var(--ram-text);
+}
+
+.ram-topnav__toggle {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  gap: 5px;
+  padding: 0;
+  border: 1px solid var(--ram-glass-border);
+  background: var(--ram-glass);
+  border-radius: var(--ram-radius-md);
+  cursor: pointer;
+  transition: background var(--ram-motion-fast);
+}
+
+.ram-topnav__toggle:hover {
+  background: var(--ram-glass-strong);
+}
+
+.ram-topnav__bar {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: var(--ram-text);
+  border-radius: 2px;
+  transition: transform var(--ram-motion-base),
+    opacity var(--ram-motion-fast);
+}
+
+.ram-topnav__bar--open:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.ram-topnav__bar--open:nth-child(2) {
+  opacity: 0;
+}
+.ram-topnav__bar--open:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+@media (min-width: 768px) {
+  .ram-topnav {
+    padding: 10px 18px;
+  }
+
+  .ram-topnav__left {
+    gap: 24px;
+  }
+
+  .ram-topnav__right {
+    gap: 10px;
+  }
+
+  .ram-topnav__brand {
+    font-size: 18px;
+  }
+
+  .ram-topnav__links {
+    display: flex;
+  }
+
+  .ram-topnav__toggle {
+    display: none;
+  }
+}
+</style>
+
+<style>
+.ram-topnav__overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: rgba(10, 10, 22, 0.45);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.ram-topnav__drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 51;
+  width: min(82vw, 320px);
+  padding: var(--ram-space-7) var(--ram-space-5) var(--ram-space-5);
+  background: var(--ram-bg-soft);
+  border-left: 1px solid var(--ram-border);
+  box-shadow: -16px 0 48px rgba(0, 0, 0, 0.18);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ram-space-3);
+  overflow-y: auto;
+}
+
+.ram-topnav__drawer-links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ram-space-1);
+  margin-top: var(--ram-space-4);
+}
+
+.ram-topnav__drawer-link {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 44px;
+  padding: 12px 16px;
+  border: none;
+  background: transparent;
+  color: var(--ram-text);
+  font-family: var(--ram-font-display);
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: var(--ram-radius-md);
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background var(--ram-motion-fast);
+}
+
+.ram-topnav__drawer-link:hover {
+  background: var(--ram-glass-inner);
+}
+
+.ram-topnav__drawer-link--active {
+  background: var(--ram-primary-soft);
+  color: var(--ram-primary);
+}
+
+@media (min-width: 768px) {
+  .ram-topnav__overlay,
+  .ram-topnav__drawer {
+    display: none;
+  }
+}
+
+.ram-topnav-drawer-enter-active,
+.ram-topnav-drawer-leave-active {
+  transition: opacity var(--ram-motion-base);
+}
+.ram-topnav-drawer-enter-active .ram-topnav__drawer,
+.ram-topnav-drawer-leave-active .ram-topnav__drawer {
+  transition: transform var(--ram-motion-base);
+}
+.ram-topnav-drawer-enter-from,
+.ram-topnav-drawer-leave-to {
+  opacity: 0;
+}
+.ram-topnav-drawer-enter-from .ram-topnav__drawer,
+.ram-topnav-drawer-leave-to .ram-topnav__drawer {
+  transform: translateX(100%);
 }
 </style>

@@ -24,8 +24,8 @@ const year = new Date().getFullYear();
 <style scoped>
 .lp-footer__inner {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-start;
   flex-wrap: wrap;
   gap: var(--ram-space-3);
   padding: var(--ram-space-4) var(--ram-space-5);
@@ -33,7 +33,16 @@ const year = new Date().getFullYear();
 
 .lp-footer__links {
   display: flex;
+  flex-wrap: wrap;
   gap: var(--ram-space-4);
+}
+
+@media (min-width: 768px) {
+  .lp-footer__inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
 }
 
 .lp-footer__link {

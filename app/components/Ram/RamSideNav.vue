@@ -63,10 +63,16 @@ const emit = defineEmits<{ nav: [string] }>();
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  padding: 14px;
+  padding: 12px;
   border: 1px solid var(--ram-glass-border);
   border-radius: var(--ram-radius-lg);
   box-shadow: var(--ram-shadow);
+}
+
+@media (min-width: 768px) {
+  .ram-sidenav {
+    padding: 14px;
+  }
 }
 
 .ram-sidenav__backdrop {

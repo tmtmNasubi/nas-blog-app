@@ -152,8 +152,8 @@ useSeoMeta({
 <style scoped>
 .lp {
   display: grid;
-  gap: var(--ram-space-10);
-  padding: var(--ram-space-6);
+  gap: var(--ram-space-7);
+  padding: var(--ram-space-4);
   max-width: 1120px;
   margin-inline: auto;
 }
@@ -183,7 +183,11 @@ useSeoMeta({
   grid-template-columns: 1fr;
 }
 
-@media (min-width: 720px) {
+@media (min-width: 768px) {
+  .lp {
+    gap: var(--ram-space-10);
+    padding: var(--ram-space-6);
+  }
   .lp__grid--2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
