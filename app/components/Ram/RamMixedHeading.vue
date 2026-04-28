@@ -61,6 +61,7 @@ const headingTag = computed(() => props.as);
   display: flex;
   flex-direction: column;
   gap: 4px;
+  min-width: 0;
 }
 
 .ram-mixed-heading__title {
@@ -68,6 +69,7 @@ const headingTag = computed(() => props.as);
   word-break: normal;
   overflow-wrap: anywhere;
   line-break: strict;
+  min-width: 0;
 }
 
 .ram-mixed-heading__subtitle {
