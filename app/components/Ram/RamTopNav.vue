@@ -28,8 +28,12 @@ const onClick = (l: LinkItem) => {
 };
 
 if (import.meta.client) {
-  useEventListener(document, "keydown", (e: KeyboardEvent) => {
+  const onKeydown = (e: KeyboardEvent) => {
     if (e.key === "Escape" && isOpen.value) isOpen.value = false;
+  };
+
+  onMounted(() => {
+    document.addEventListener("keydown", onKeydown);
   });
 
   watch(isOpen, (open) => {
@@ -37,6 +41,7 @@ if (import.meta.client) {
   });
 
   onBeforeUnmount(() => {
+    document.removeEventListener("keydown", onKeydown);
     document.body.style.overflow = "";
   });
 }
