@@ -37,7 +37,7 @@ const year = new Date().getFullYear();
   gap: var(--ram-space-4);
 }
 
-@media (min-width: 768px) {
+@media (min-width: var(--ram-bp-md)) {
   .lp-footer__inner {
     flex-direction: row;
     align-items: center;

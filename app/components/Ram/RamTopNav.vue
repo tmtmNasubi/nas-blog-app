@@ -133,10 +133,7 @@ if (import.meta.client) {
               aria-modal="true"
               aria-label="ナビゲーション"
             >
-              <nav
-                class="ram-topnav__drawer-links"
-                aria-label="Primary mobile"
-              >
+              <nav class="ram-topnav__drawer-links" aria-label="Primary mobile">
                 <template v-for="raw in links" :key="normalize(raw).value">
                   <NuxtLink
                     v-if="normalize(raw).to"
@@ -314,7 +311,8 @@ if (import.meta.client) {
   height: 2px;
   background: var(--ram-text);
   border-radius: 2px;
-  transition: transform var(--ram-motion-base),
+  transition:
+    transform var(--ram-motion-base),
     opacity var(--ram-motion-fast);
 }
 
@@ -328,7 +326,7 @@ if (import.meta.client) {
   transform: translateY(-7px) rotate(-45deg);
 }
 
-@media (min-width: 768px) {
+@media (min-width: var(--ram-bp-md)) {
   .ram-topnav {
     padding: 10px 18px;
   }
@@ -417,7 +415,7 @@ if (import.meta.client) {
   color: var(--ram-primary);
 }
 
-@media (min-width: 768px) {
+@media (min-width: var(--ram-bp-md)) {
   .ram-topnav__overlay,
   .ram-topnav__drawer {
     display: none;

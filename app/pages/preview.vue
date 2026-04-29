@@ -10,8 +10,20 @@ const sideNavSections = [
     title: "Library",
     items: [
       { id: "home", label: "ホーム", icon: "🏠" },
-      { id: "articles", label: "記事", icon: "📝", badge: "12", badgeTone: "primary" as const },
-      { id: "drafts", label: "下書き", icon: "📄", badge: "3", badgeTone: "sun" as const },
+      {
+        id: "articles",
+        label: "記事",
+        icon: "📝",
+        badge: "12",
+        badgeTone: "primary" as const,
+      },
+      {
+        id: "drafts",
+        label: "下書き",
+        icon: "📄",
+        badge: "3",
+        badgeTone: "sun" as const,
+      },
     ],
   },
   {
@@ -53,16 +65,30 @@ const buttonVariants = [
   { variant: "danger" as const, label: "削除" },
 ];
 
-const badgeTones = ["primary", "secondary", "accent", "sun", "sky", "coral", "neutral"] as const;
+const badgeTones = [
+  "primary",
+  "secondary",
+  "accent",
+  "sun",
+  "sky",
+  "coral",
+  "neutral",
+] as const;
 
 const typeVariants = [
   { variant: "displayL" as const, sample: "ガラスの向こう側" },
   { variant: "displayM" as const, sample: "セクション主題" },
   { variant: "headingL" as const, sample: "記事タイトル" },
   { variant: "headingM" as const, sample: "カード見出し" },
-  { variant: "bodyL" as const, sample: "Ramune UI は CSS と Vue で動く長文用の本文です。" },
+  {
+    variant: "bodyL" as const,
+    sample: "Ramune UI は CSS と Vue で動く長文用の本文です。",
+  },
   { variant: "bodyM" as const, sample: "説明文に使う標準サイズです。" },
-  { variant: "bodyS" as const, sample: "補足やメタ情報のための小さめテキスト。" },
+  {
+    variant: "bodyS" as const,
+    sample: "補足やメタ情報のための小さめテキスト。",
+  },
   { variant: "label" as const, sample: "SECTION LABEL" },
   { variant: "mono" as const, sample: "DATABASE_URL=postgres://..." },
 ];
@@ -107,8 +133,14 @@ const typeVariants = [
         />
         <RamGlass :inset="28" class="preview__card">
           <div class="preview__type-list">
-            <div v-for="t in typeVariants" :key="t.variant" class="preview__type-row">
-              <RamType variant="mono" :color="'var(--ram-subtle)'">{{ t.variant }}</RamType>
+            <div
+              v-for="t in typeVariants"
+              :key="t.variant"
+              class="preview__type-row"
+            >
+              <RamType variant="mono" :color="'var(--ram-subtle)'">{{
+                t.variant
+              }}</RamType>
               <RamType :variant="t.variant">{{ t.sample }}</RamType>
             </div>
           </div>
@@ -145,10 +177,19 @@ const typeVariants = [
 
       <!-- Buttons -->
       <section class="preview__section">
-        <RamMixedHeading eyebrow="03 / BUTTON" title="ボタン" subtitle="Button" size="M" />
+        <RamMixedHeading
+          eyebrow="03 / BUTTON"
+          title="ボタン"
+          subtitle="Button"
+          size="M"
+        />
         <RamGlass :inset="28">
           <div class="preview__row">
-            <RamButton v-for="b in buttonVariants" :key="b.variant" :variant="b.variant">
+            <RamButton
+              v-for="b in buttonVariants"
+              :key="b.variant"
+              :variant="b.variant"
+            >
               {{ b.label }}
             </RamButton>
             <RamButton variant="icon" icon="✨" aria-label="魔法" />
@@ -165,20 +206,40 @@ const typeVariants = [
 
       <!-- Badge -->
       <section class="preview__section">
-        <RamMixedHeading eyebrow="04 / BADGE" title="バッジ" subtitle="Status Badge" size="M" />
+        <RamMixedHeading
+          eyebrow="04 / BADGE"
+          title="バッジ"
+          subtitle="Status Badge"
+          size="M"
+        />
         <RamGlass :inset="28">
           <div class="preview__row">
-            <RamBadge v-for="t in badgeTones" :key="`soft-${t}`" :tone="t" variant="soft">
+            <RamBadge
+              v-for="t in badgeTones"
+              :key="`soft-${t}`"
+              :tone="t"
+              variant="soft"
+            >
               {{ t }}
             </RamBadge>
           </div>
           <div class="preview__row preview__row--mt">
-            <RamBadge v-for="t in badgeTones" :key="`solid-${t}`" :tone="t" variant="solid">
+            <RamBadge
+              v-for="t in badgeTones"
+              :key="`solid-${t}`"
+              :tone="t"
+              variant="solid"
+            >
               {{ t }}
             </RamBadge>
           </div>
           <div class="preview__row preview__row--mt">
-            <RamBadge v-for="t in badgeTones" :key="`outline-${t}`" :tone="t" variant="outline">
+            <RamBadge
+              v-for="t in badgeTones"
+              :key="`outline-${t}`"
+              :tone="t"
+              variant="outline"
+            >
               {{ t }}
             </RamBadge>
           </div>
@@ -209,7 +270,11 @@ const typeVariants = [
               <RamAvatar name="Riku" :size="48" />
               <RamAvatar name="Yui" :size="64" />
             </div>
-            <RamType variant="label" :color="'var(--ram-muted)'" class="preview__mt">
+            <RamType
+              variant="label"
+              :color="'var(--ram-muted)'"
+              class="preview__mt"
+            >
               STATUS
             </RamType>
             <div class="preview__row preview__row--mt preview__row--align">
@@ -224,7 +289,11 @@ const typeVariants = [
             <div class="preview__row preview__row--mt preview__row--align">
               <RamAvatarGroup :users="users" :max="4" :size="40" />
             </div>
-            <RamType variant="bodyS" :color="'var(--ram-muted)'" class="preview__mt">
+            <RamType
+              variant="bodyS"
+              :color="'var(--ram-muted)'"
+              class="preview__mt"
+            >
               チームメンバー {{ users.length }} 人
             </RamType>
           </RamGlass>
@@ -233,9 +302,16 @@ const typeVariants = [
 
       <!-- Tabs -->
       <section class="preview__section">
-        <RamMixedHeading eyebrow="06 / TABS" title="タブ" subtitle="Tabs" size="M" />
+        <RamMixedHeading
+          eyebrow="06 / TABS"
+          title="タブ"
+          subtitle="Tabs"
+          size="M"
+        />
         <RamGlass :inset="28">
-          <RamType variant="label" :color="'var(--ram-muted)'">SEGMENTED</RamType>
+          <RamType variant="label" :color="'var(--ram-muted)'"
+            >SEGMENTED</RamType
+          >
           <div class="preview__row preview__row--mt">
             <RamTabs
               v-model="tabSeg"
@@ -246,7 +322,11 @@ const typeVariants = [
               ]"
             />
           </div>
-          <RamType variant="label" :color="'var(--ram-muted)'" class="preview__mt">
+          <RamType
+            variant="label"
+            :color="'var(--ram-muted)'"
+            class="preview__mt"
+          >
             UNDERLINE
           </RamType>
           <div class="preview__row preview__row--mt">
@@ -279,8 +359,12 @@ const typeVariants = [
             @nav="sideNavActive = $event"
           />
           <RamGlass :inset="24">
-            <RamType variant="label" :color="'var(--ram-muted)'">SELECTED</RamType>
-            <RamType variant="headingM" class="preview__mt">{{ sideNavActive }}</RamType>
+            <RamType variant="label" :color="'var(--ram-muted)'"
+              >SELECTED</RamType
+            >
+            <RamType variant="headingM" class="preview__mt">{{
+              sideNavActive
+            }}</RamType>
             <RamType variant="bodyM" :color="'var(--ram-muted)'">
               サイドナビの選択値が更新されています。
             </RamType>
@@ -298,29 +382,45 @@ const typeVariants = [
         />
         <div class="preview__grid">
           <RamGlass :inset="24" hover>
-            <RamType variant="label" :color="'var(--ram-primary)'">GLASS</RamType>
-            <RamType variant="headingM" class="preview__mt">標準のガラス面</RamType>
+            <RamType variant="label" :color="'var(--ram-primary)'"
+              >GLASS</RamType
+            >
+            <RamType variant="headingM" class="preview__mt"
+              >標準のガラス面</RamType
+            >
             <RamType variant="bodyM" :color="'var(--ram-muted)'">
               背景blobの色を透過して拾う標準のサーフェスです。
             </RamType>
           </RamGlass>
           <RamGlass :inset="24" strong hover>
-            <RamType variant="label" :color="'var(--ram-secondary)'">GLASS STRONG</RamType>
-            <RamType variant="headingM" class="preview__mt">読みやすいガラス面</RamType>
+            <RamType variant="label" :color="'var(--ram-secondary)'"
+              >GLASS STRONG</RamType
+            >
+            <RamType variant="headingM" class="preview__mt"
+              >読みやすいガラス面</RamType
+            >
             <RamType variant="bodyM" :color="'var(--ram-muted)'">
               長文やフォームに使う、コントラストを強めた面。
             </RamType>
           </RamGlass>
           <RamPrism color="var(--ram-sky)" :padding="24">
-            <RamType variant="label" :color="'var(--ram-sky)'">PRISM / SKY</RamType>
-            <RamType variant="headingM" class="preview__mt">プリズム表面</RamType>
+            <RamType variant="label" :color="'var(--ram-sky)'"
+              >PRISM / SKY</RamType
+            >
+            <RamType variant="headingM" class="preview__mt"
+              >プリズム表面</RamType
+            >
             <RamType variant="bodyM" :color="'var(--ram-muted)'">
               虹色のシーンを纏った装飾的なサーフェス。
             </RamType>
           </RamPrism>
           <RamPrism color="var(--ram-accent)" :padding="24">
-            <RamType variant="label" :color="'var(--ram-accent)'">PRISM / ACCENT</RamType>
-            <RamType variant="headingM" class="preview__mt">アクセントカラー版</RamType>
+            <RamType variant="label" :color="'var(--ram-accent)'"
+              >PRISM / ACCENT</RamType
+            >
+            <RamType variant="headingM" class="preview__mt"
+              >アクセントカラー版</RamType
+            >
             <RamType variant="bodyM" :color="'var(--ram-muted)'">
               色をpropで切り替えできます。
             </RamType>
@@ -339,7 +439,8 @@ const typeVariants = [
         <RamGlass :inset="28">
           <RamType variant="bodyM">
             環境変数 <RamInlineCode>DATABASE_URL</RamInlineCode> を設定し、
-            <RamInlineCode>pnpm dev</RamInlineCode> で開発サーバを起動してください。 詳細は
+            <RamInlineCode>pnpm dev</RamInlineCode>
+            で開発サーバを起動してください。 詳細は
             <RamInlineCode>https://ramune-ui.dev/docs</RamInlineCode> を参照。
           </RamType>
         </RamGlass>
@@ -374,7 +475,7 @@ const typeVariants = [
   gap: 8px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: var(--ram-bp-md)) {
   .preview__topnav-actions {
     display: flex;
   }
@@ -488,7 +589,7 @@ const typeVariants = [
   min-width: 0;
 }
 
-@media (min-width: 768px) {
+@media (min-width: var(--ram-bp-md)) {
   .preview__inner {
     padding: var(--ram-space-6) var(--ram-space-6) var(--ram-space-12);
     gap: var(--ram-space-10);

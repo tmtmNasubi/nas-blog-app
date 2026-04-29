@@ -41,7 +41,7 @@ withDefaults(
 .lp-hero {
   position: relative;
   isolation: isolate;
-  min-height: 70svh;
+  /* min-height: 70svh; */
   display: flex;
   align-items: center;
   border-radius: var(--ram-radius-lg);
@@ -64,7 +64,7 @@ withDefaults(
   margin-top: var(--ram-space-3);
 }
 
-@media (min-width: 768px) {
+@media (min-width: var(--ram-bp-md)) {
   .lp-hero {
     min-height: 80svh;
     padding: var(--ram-space-10) var(--ram-space-6);

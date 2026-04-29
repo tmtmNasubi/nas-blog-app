@@ -57,7 +57,7 @@ withDefaults(
   gap: var(--ram-space-3);
 }
 
-@media (min-width: 768px) {
+@media (min-width: var(--ram-bp-md)) {
   .lp-about__head {
     flex-direction: row;
     align-items: center;
