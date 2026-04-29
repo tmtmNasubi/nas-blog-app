@@ -109,7 +109,6 @@ const typeVariants = [
           <RamButton variant="ghost" size="sm" @click="toggle">
             {{ mode === "light" ? "🌙 Dark" : "☀️ Light" }}
           </RamButton>
-          <RamButton variant="primary" size="sm">新規作成</RamButton>
         </div>
       </RamTopNav>
 

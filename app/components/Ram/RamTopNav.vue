@@ -22,27 +22,35 @@ const isActive = (l: string | LinkItem) => normalize(l).value === props.active;
 
 const isOpen = ref(false);
 
-const onClick = (l: LinkItem) => {
-  emit("nav", l.value);
+const closeMenu = () => {
   isOpen.value = false;
 };
 
+const toggleMenu = () => {
+  isOpen.value = !isOpen.value;
+};
+
+const onClick = (l: LinkItem) => {
+  emit("nav", l.value);
+  closeMenu();
+};
+
 if (import.meta.client) {
-  const onKeydown = (e: KeyboardEvent) => {
-    if (e.key === "Escape" && isOpen.value) isOpen.value = false;
-  };
+  watch(isOpen, (open, _, onCleanup) => {
+    if (!open) return;
 
-  onMounted(() => {
+    const originalOverflow = document.body.style.overflow;
+    const onKeydown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeMenu();
+    };
+
+    document.body.style.overflow = "hidden";
     document.addEventListener("keydown", onKeydown);
-  });
 
-  watch(isOpen, (open) => {
-    document.body.style.overflow = open ? "hidden" : "";
-  });
-
-  onBeforeUnmount(() => {
-    document.removeEventListener("keydown", onKeydown);
-    document.body.style.overflow = "";
+    onCleanup(() => {
+      document.removeEventListener("keydown", onKeydown);
+      document.body.style.overflow = originalOverflow;
+    });
   });
 }
 </script>
@@ -103,7 +111,7 @@ if (import.meta.client) {
         :aria-expanded="isOpen"
         aria-controls="ram-topnav-drawer"
         :aria-label="isOpen ? 'メニューを閉じる' : 'メニューを開く'"
-        @click="isOpen = !isOpen"
+        @click="toggleMenu"
       >
         <span
           :class="['ram-topnav__bar', { 'ram-topnav__bar--open': isOpen }]"
@@ -124,7 +132,7 @@ if (import.meta.client) {
             <div
               class="ram-topnav__overlay"
               aria-hidden="true"
-              @click="isOpen = false"
+              @click="closeMenu"
             />
             <div
               id="ram-topnav-drawer"

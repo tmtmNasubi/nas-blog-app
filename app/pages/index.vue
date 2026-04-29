@@ -43,8 +43,6 @@ const { data: articles } = await useAsyncData("lp-articles", () =>
     .all(),
 );
 
-const themeIcon = computed(() => (mode.value === "light" ? "☀️" : "🌙"));
-
 const active = ref("home");
 const onClickNavigation = (l: string) => {
   if (l === "#top") active.value = "home";
@@ -73,9 +71,9 @@ useSeoMeta({
       class="lp__nav"
       @nav="onClickNavigation"
     >
-      <RamButton variant="ghost" size="md" @click="toggle">{{
-        themeIcon
-      }}</RamButton>
+      <RamButton variant="ghost" size="md" @click="toggle">
+        {{ mode === "light" ? "🌙 Dark" : "☀️ Light" }}
+      </RamButton>
     </RamTopNav>
 
     <LpHeroSection />
