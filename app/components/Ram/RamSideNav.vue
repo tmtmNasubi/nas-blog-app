@@ -1,5 +1,12 @@
 <script setup lang="ts">
-type Tone = "primary" | "secondary" | "accent" | "sun" | "sky" | "coral" | "neutral";
+type Tone =
+  | "primary"
+  | "secondary"
+  | "accent"
+  | "sun"
+  | "sky"
+  | "coral"
+  | "neutral";
 
 interface Item {
   id: string;
@@ -39,7 +46,10 @@ const emit = defineEmits<{ nav: [string] }>();
           v-for="item in section.items"
           :key="item.id"
           type="button"
-          :class="['ram-sidenav__item', { 'ram-sidenav__item--active': item.id === active }]"
+          :class="[
+            'ram-sidenav__item',
+            { 'ram-sidenav__item--active': item.id === active },
+          ]"
           @click="emit('nav', item.id)"
         >
           <span v-if="item.id === active" class="ram-sidenav__bar" />
@@ -63,10 +73,16 @@ const emit = defineEmits<{ nav: [string] }>();
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  padding: 14px;
+  padding: 12px;
   border: 1px solid var(--ram-glass-border);
   border-radius: var(--ram-radius-lg);
   box-shadow: var(--ram-shadow);
+}
+
+@media (min-width: 768px) {
+  .ram-sidenav {
+    padding: 14px;
+  }
 }
 
 .ram-sidenav__backdrop {

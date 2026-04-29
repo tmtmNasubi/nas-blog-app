@@ -22,9 +22,7 @@ const props = withDefaults(
 
 const emit = defineEmits<{ click: [MouseEvent] }>();
 
-const isDisabled = computed(() =>
-  props.as === "button" ? props.disabled : undefined,
-);
+const isDisabled = computed(() => (props.as === "button" ? props.disabled : undefined));
 
 const handleClick = (e: MouseEvent) => {
   if (props.disabled) return;
@@ -95,23 +93,23 @@ const handleClick = (e: MouseEvent) => {
 
 /* Sizes */
 .ram-button--sm {
-  padding: 6px 12px;
+  padding: 6px 14px;
   font-size: 12px;
-  height: 28px;
+  height: 32px;
   gap: 6px;
   border-radius: var(--ram-radius-sm);
 }
 .ram-button--md {
-  padding: 9px 18px;
-  font-size: 13px;
-  height: 36px;
+  padding: 11px 20px;
+  font-size: 14px;
+  height: 44px;
   gap: 8px;
   border-radius: var(--ram-radius-md);
 }
 .ram-button--lg {
-  padding: 12px 26px;
+  padding: 13px 28px;
   font-size: 15px;
-  height: 46px;
+  height: 48px;
   gap: 10px;
   border-radius: var(--ram-radius-md);
 }
@@ -131,25 +129,23 @@ const handleClick = (e: MouseEvent) => {
   padding: 0;
 }
 .ram-button--icon.ram-button--sm {
-  width: 28px;
+  width: 32px;
 }
 .ram-button--icon.ram-button--md {
-  width: 36px;
+  width: 44px;
 }
 .ram-button--icon.ram-button--lg {
-  width: 46px;
+  width: 48px;
 }
 
 /* Variants */
 .ram-button--primary {
   background: linear-gradient(135deg, var(--ram-primary), var(--ram-sun));
   color: #fff;
-  box-shadow: 0 4px 14px
-    color-mix(in oklch, var(--ram-primary) 33%, transparent);
+  box-shadow: 0 4px 14px color-mix(in oklch, var(--ram-primary) 33%, transparent);
 }
 .ram-button--primary:not(:disabled):hover {
-  box-shadow: 0 10px 28px
-    color-mix(in oklch, var(--ram-primary) 55%, transparent);
+  box-shadow: 0 10px 28px color-mix(in oklch, var(--ram-primary) 55%, transparent);
 }
 
 .ram-button--secondary {

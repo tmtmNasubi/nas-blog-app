@@ -52,8 +52,17 @@ withDefaults(
 
 .lp-about__head {
   display: flex;
-  align-items: center;
-  gap: var(--ram-space-4);
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--ram-space-3);
+}
+
+@media (min-width: 768px) {
+  .lp-about__head {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--ram-space-4);
+  }
 }
 
 .lp-about__head-text {

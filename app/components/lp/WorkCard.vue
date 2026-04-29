@@ -17,11 +17,7 @@ defineProps<{
     </div>
     <div class="lp-work__body">
       <RamType variant="headingM" as="h3">{{ title }}</RamType>
-      <RamType
-        v-if="description"
-        variant="bodyM"
-        :color="'var(--ram-muted)'"
-      >
+      <RamType v-if="description" variant="bodyM" :color="'var(--ram-muted)'">
         {{ description }}
       </RamType>
       <div v-if="tags?.length" class="lp-work__tags">
@@ -30,25 +26,9 @@ defineProps<{
         </RamBadge>
       </div>
       <div class="lp-work__actions">
-        <RamButton v-if="demo" as="link" :to="demo" variant="ghost" size="sm">
-          Demo →
-        </RamButton>
-        <RamButton
-          v-if="repo"
-          as="link"
-          :to="repo"
-          variant="ghost"
-          size="sm"
-        >
-          Repo →
-        </RamButton>
-        <RamButton
-          v-if="path && !demo"
-          as="link"
-          :to="path"
-          variant="ghost"
-          size="sm"
-        >
+        <RamButton v-if="demo" as="link" :to="demo" variant="ghost" size="sm"> Demo → </RamButton>
+        <RamButton v-if="repo" as="link" :to="repo" variant="ghost" size="sm"> Repo → </RamButton>
+        <RamButton v-if="path && !demo" as="link" :to="path" variant="ghost" size="sm">
           詳細 →
         </RamButton>
       </div>

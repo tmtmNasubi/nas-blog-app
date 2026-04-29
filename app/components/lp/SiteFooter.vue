@@ -10,9 +10,9 @@ const year = new Date().getFullYear();
           © {{ year }} - Copyright nas | All Rights Reserved.
         </RamType>
         <nav class="lp-footer__links">
-          <NuxtLink to="https://github.com/tmtmNasubi" class="lp-footer__link">
+          <a href="https://github.com/tmtmNasubi" class="lp-footer__link">
             GitHub
-          </NuxtLink>
+          </a>
           <NuxtLink to="/blog-index" class="lp-footer__link">Articles</NuxtLink>
           <NuxtLink to="/about" class="lp-footer__link">About</NuxtLink>
         </nav>
@@ -24,8 +24,8 @@ const year = new Date().getFullYear();
 <style scoped>
 .lp-footer__inner {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-start;
   flex-wrap: wrap;
   gap: var(--ram-space-3);
   padding: var(--ram-space-4) var(--ram-space-5);
@@ -33,7 +33,16 @@ const year = new Date().getFullYear();
 
 .lp-footer__links {
   display: flex;
+  flex-wrap: wrap;
   gap: var(--ram-space-4);
+}
+
+@media (min-width: 768px) {
+  .lp-footer__inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
 }
 
 .lp-footer__link {

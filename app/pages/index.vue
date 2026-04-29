@@ -43,8 +43,6 @@ const { data: articles } = await useAsyncData("lp-articles", () =>
     .all(),
 );
 
-const themeIcon = computed(() => (mode.value === "light" ? "☀️" : "🌙"));
-
 const active = ref("home");
 const onClickNavigation = (l: string) => {
   if (l === "#top") active.value = "home";
@@ -70,12 +68,12 @@ useSeoMeta({
       brand="nas.love"
       :links="navLinks"
       :active="active"
-      @nav="onClickNavigation"
       class="lp__nav"
+      @nav="onClickNavigation"
     >
-      <RamButton variant="ghost" size="md" @click="toggle">{{
-        themeIcon
-      }}</RamButton>
+      <RamButton variant="ghost" size="md" @click="toggle">
+        {{ mode === "light" ? "🌙 Dark" : "☀️ Light" }}
+      </RamButton>
     </RamTopNav>
 
     <LpHeroSection />
@@ -152,9 +150,8 @@ useSeoMeta({
 <style scoped>
 .lp {
   display: grid;
-  gap: var(--ram-space-10);
-  padding: var(--ram-space-6);
-  max-width: 1120px;
+  gap: var(--ram-space-7);
+  padding: var(--ram-space-4);
   margin-inline: auto;
 }
 
@@ -183,7 +180,11 @@ useSeoMeta({
   grid-template-columns: 1fr;
 }
 
-@media (min-width: 720px) {
+@media (min-width: 768px) {
+  .lp {
+    gap: var(--ram-space-10);
+    padding: var(--ram-space-6);
+  }
   .lp__grid--2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -192,7 +193,7 @@ useSeoMeta({
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1120px) {
   .lp__grid--3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
