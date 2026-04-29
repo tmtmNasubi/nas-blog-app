@@ -49,7 +49,6 @@ const rootStyle = computed<CSSProperties>(() => ({
   margin: 0;
   font-family: var(--ram-font-body);
   letter-spacing: 0;
-  min-width: 0;
   overflow-wrap: anywhere;
 }
 

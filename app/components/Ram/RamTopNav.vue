@@ -206,7 +206,6 @@ if (import.meta.client) {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  min-width: 0;
   max-width: 100%;
 }
 
@@ -226,7 +225,6 @@ if (import.meta.client) {
   z-index: 1;
   display: flex;
   align-items: center;
-  min-width: 0;
 }
 
 .ram-topnav__left {
@@ -252,7 +250,6 @@ if (import.meta.client) {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  min-width: 0;
 }
 
 .ram-topnav__links {

@@ -491,7 +491,6 @@ const typeVariants = [
   display: flex;
   flex-direction: column;
   gap: var(--ram-space-7);
-  min-width: 0;
 }
 
 .preview__header {
@@ -499,26 +498,22 @@ const typeVariants = [
   flex-direction: column;
   gap: var(--ram-space-3);
   margin-top: var(--ram-space-3);
-  min-width: 0;
 }
 
 .preview__section {
   display: flex;
   flex-direction: column;
   gap: var(--ram-space-4);
-  min-width: 0;
 }
 
 .preview__card {
   width: 100%;
-  min-width: 0;
 }
 
 .preview__type-list {
   display: flex;
   flex-direction: column;
   gap: var(--ram-space-3);
-  min-width: 0;
 }
 
 .preview__type-row {
@@ -527,13 +522,12 @@ const typeVariants = [
   gap: 6px;
   padding-bottom: 14px;
   border-bottom: 1px dashed var(--ram-border);
-  min-width: 0;
 }
 
 .preview__type-row > * {
   display: block;
   width: 100%;
-  min-width: 0;
+
   max-width: 100%;
   overflow-wrap: anywhere;
   word-break: normal;
@@ -548,7 +542,6 @@ const typeVariants = [
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  min-width: 0;
 }
 
 .preview__row > * {
@@ -571,22 +564,18 @@ const typeVariants = [
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 16px;
-  min-width: 0;
 }
 
 .preview__grid > * {
-  min-width: 0;
 }
 
 .preview__sidenav-grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 16px;
-  min-width: 0;
 }
 
 .preview__sidenav-grid > * {
-  min-width: 0;
 }
 
 @media (min-width: var(--ram-bp-md)) {
