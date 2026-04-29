@@ -1,19 +1,18 @@
-import { readdirSync, statSync } from 'node:fs';
-import { join, relative, sep } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { readdirSync, statSync } from "node:fs";
+import { join, relative, sep } from "node:path";
+import { fileURLToPath } from "node:url";
+import tailwindcss from "@tailwindcss/vite";
 
-import tailwindcss from '@tailwindcss/vite';
-
-const contentDir = fileURLToPath(new URL('./content', import.meta.url));
+const contentDir = fileURLToPath(new URL("./content", import.meta.url));
 
 const toContentRoute = (filePath: string) => {
   const routePath = relative(contentDir, filePath)
-    .replace(/\.(md|mdc)$/, '')
+    .replace(/\.(md|mdc)$/, "")
     .split(sep)
-    .join('/');
+    .join("/");
 
-  if (routePath === 'index') return '/';
-  if (routePath.endsWith('/index')) return `/${routePath.replace(/\/index$/, '')}`;
+  if (routePath === "index") return "/";
+  if (routePath.endsWith("/index")) return `/${routePath.replace(/\/index$/, "")}`;
   return `/${routePath}`;
 };
 
@@ -33,8 +32,8 @@ export default defineNuxtConfig({
   experimental: {
     typedPages: true,
   },
-  modules: ['@nuxt/content', '@nuxt/eslint', '@nuxt/image', '@nuxt/test-utils'],
-  css: ['~/assets/css/ramune.css', '~/assets/css/tailwind.css'],
+  modules: ["@nuxt/content", "@nuxt/eslint", "@nuxt/image", "@nuxt/test-utils"],
+  css: ["~/assets/css/ramune.css", "~/assets/css/tailwind.css"],
   nitro: {
     prerender: {
       crawlLinks: true,
@@ -43,12 +42,12 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      htmlAttrs: { lang: 'ja', class: 'ram-light' },
+      htmlAttrs: { lang: "ja", class: "ram-light" },
     },
   },
   vite: {
     plugins: [tailwindcss()],
   },
   devtools: { enabled: true },
-  compatibilityDate: '2024-04-03',
+  compatibilityDate: "2024-04-03",
 });

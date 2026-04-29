@@ -38,11 +38,7 @@ const headingTag = computed(() => props.as);
     <RamType v-if="eyebrow" variant="label" :color="'var(--ram-primary)'">
       {{ eyebrow }}
     </RamType>
-    <RamType
-      :variant="titleVariant"
-      :as="headingTag"
-      class="ram-mixed-heading__title"
-    >
+    <RamType :variant="titleVariant" :as="headingTag" class="ram-mixed-heading__title">
       {{ title }}
     </RamType>
     <RamType

@@ -29,11 +29,7 @@ const formattedDate = computed(() => {
           </RamType>
         </div>
         <RamType variant="headingS" as="h3">{{ title }}</RamType>
-        <RamType
-          v-if="description"
-          variant="bodyS"
-          :color="'var(--ram-muted)'"
-        >
+        <RamType v-if="description" variant="bodyS" :color="'var(--ram-muted)'">
           {{ description }}
         </RamType>
         <div v-if="tags?.length" class="lp-article__tags">

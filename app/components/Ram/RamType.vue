@@ -35,11 +35,7 @@ const rootStyle = computed<CSSProperties>(() => ({
 </script>
 
 <template>
-  <component
-    :is="as"
-    :class="['ram-type', `ram-type--${variant}`]"
-    :style="rootStyle"
-  >
+  <component :is="as" :class="['ram-type', `ram-type--${variant}`]" :style="rootStyle">
     <slot />
   </component>
 </template>

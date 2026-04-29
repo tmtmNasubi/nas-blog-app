@@ -27,17 +27,10 @@ withDefaults(
       </div>
       <RamType variant="bodyM">{{ bio }}</RamType>
       <div class="lp-about__links">
-        <RamButton
-          as="link"
-          to="https://github.com/tmtmNasubi"
-          variant="secondary"
-          size="md"
-        >
+        <RamButton as="link" to="https://github.com/tmtmNasubi" variant="secondary" size="md">
           GitHub
         </RamButton>
-        <RamButton as="link" to="/about" variant="ghost" size="md">
-          詳しく見る
-        </RamButton>
+        <RamButton as="link" to="/about" variant="ghost" size="md"> 詳しく見る </RamButton>
       </div>
     </div>
   </RamGlass>

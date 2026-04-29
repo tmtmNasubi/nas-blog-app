@@ -21,10 +21,7 @@ const rootStyle = computed<CSSProperties>(() => ({
 
 <template>
   <div
-    :class="[
-      'ram-glass',
-      { 'ram-glass--hover': hover, 'ram-glass--strong': strong },
-    ]"
+    :class="['ram-glass', { 'ram-glass--hover': hover, 'ram-glass--strong': strong }]"
     :style="rootStyle"
   >
     <div class="ram-glass__backdrop" aria-hidden="true" />
@@ -76,12 +73,7 @@ const rootStyle = computed<CSSProperties>(() => ({
   right: 8%;
   height: 1px;
   z-index: 1;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--ram-glass-highlight),
-    transparent
-  );
+  background: linear-gradient(90deg, transparent, var(--ram-glass-highlight), transparent);
   pointer-events: none;
 }
 

@@ -10,9 +10,7 @@ const year = new Date().getFullYear();
           © {{ year }} - Copyright nas | All Rights Reserved.
         </RamType>
         <nav class="lp-footer__links">
-          <NuxtLink to="https://github.com/tmtmNasubi" class="lp-footer__link">
-            GitHub
-          </NuxtLink>
+          <NuxtLink to="https://github.com/tmtmNasubi" class="lp-footer__link"> GitHub </NuxtLink>
           <NuxtLink to="/blog-index" class="lp-footer__link">Articles</NuxtLink>
           <NuxtLink to="/about" class="lp-footer__link">About</NuxtLink>
         </nav>

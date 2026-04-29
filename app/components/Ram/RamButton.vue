@@ -22,9 +22,7 @@ const props = withDefaults(
 
 const emit = defineEmits<{ click: [MouseEvent] }>();
 
-const isDisabled = computed(() =>
-  props.as === "button" ? props.disabled : undefined,
-);
+const isDisabled = computed(() => (props.as === "button" ? props.disabled : undefined));
 
 const handleClick = (e: MouseEvent) => {
   if (props.disabled) return;
@@ -144,12 +142,10 @@ const handleClick = (e: MouseEvent) => {
 .ram-button--primary {
   background: linear-gradient(135deg, var(--ram-primary), var(--ram-sun));
   color: #fff;
-  box-shadow: 0 4px 14px
-    color-mix(in oklch, var(--ram-primary) 33%, transparent);
+  box-shadow: 0 4px 14px color-mix(in oklch, var(--ram-primary) 33%, transparent);
 }
 .ram-button--primary:not(:disabled):hover {
-  box-shadow: 0 10px 28px
-    color-mix(in oklch, var(--ram-primary) 55%, transparent);
+  box-shadow: 0 10px 28px color-mix(in oklch, var(--ram-primary) 55%, transparent);
 }
 
 .ram-button--secondary {
