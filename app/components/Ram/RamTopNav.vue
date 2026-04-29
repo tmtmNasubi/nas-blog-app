@@ -36,6 +36,8 @@ const onClick = (l: LinkItem) => {
 };
 
 if (import.meta.client) {
+  let desktopNavMediaQuery: MediaQueryList | undefined;
+
   watch(isOpen, (open, _, onCleanup) => {
     if (!open) return;
 
@@ -51,6 +53,27 @@ if (import.meta.client) {
       document.removeEventListener("keydown", onKeydown);
       document.body.style.overflow = originalOverflow;
     });
+  });
+
+  const closeMenuOnDesktop = () => {
+    if (desktopNavMediaQuery?.matches) closeMenu();
+  };
+
+  onMounted(() => {
+    const desktopNavBreakpoint =
+      getComputedStyle(document.documentElement)
+        .getPropertyValue("--ram-bp-md")
+        .trim() || "768px";
+
+    desktopNavMediaQuery = window.matchMedia(
+      `(min-width: ${desktopNavBreakpoint})`,
+    );
+    closeMenuOnDesktop();
+    desktopNavMediaQuery.addEventListener("change", closeMenuOnDesktop);
+  });
+
+  onBeforeUnmount(() => {
+    desktopNavMediaQuery?.removeEventListener("change", closeMenuOnDesktop);
   });
 }
 </script>
