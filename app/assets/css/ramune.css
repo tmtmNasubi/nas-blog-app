@@ -148,7 +148,6 @@ body {
   font-family: var(--ram-font-body);
   word-break: normal;
   overflow-wrap: anywhere;
-  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

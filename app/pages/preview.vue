@@ -366,7 +366,6 @@ const typeVariants = [
   position: relative;
   min-height: 100vh;
   isolation: isolate;
-  overflow-x: hidden;
 }
 
 .preview__topnav-actions {
@@ -445,6 +444,11 @@ const typeVariants = [
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
+  min-width: 0;
+}
+
+.preview__row > * {
+  max-width: 100%;
 }
 
 .preview__row--mt {
@@ -461,14 +465,24 @@ const typeVariants = [
 
 .preview__grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   gap: 16px;
+  min-width: 0;
+}
+
+.preview__grid > * {
+  min-width: 0;
 }
 
 .preview__sidenav-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   gap: 16px;
+  min-width: 0;
+}
+
+.preview__sidenav-grid > * {
+  min-width: 0;
 }
 
 @media (min-width: 768px) {
