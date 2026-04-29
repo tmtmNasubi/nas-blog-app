@@ -65,7 +65,15 @@ const buttonVariants = [
   { variant: "danger" as const, label: "削除" },
 ];
 
-const badgeTones = ["primary", "secondary", "accent", "sun", "sky", "coral", "neutral"] as const;
+const badgeTones = [
+  "primary",
+  "secondary",
+  "accent",
+  "sun",
+  "sky",
+  "coral",
+  "neutral",
+] as const;
 
 const typeVariants = [
   { variant: "displayL" as const, sample: "ガラスの向こう側" },
@@ -88,10 +96,8 @@ const typeVariants = [
 
 <template>
   <div class="relative isolate min-h-screen">
-    <RamBlobBg />
-
     <div
-      class="md:gap-[var(--ram-space-10)] md:px-[var(--ram-space-6)] md:pt-[var(--ram-space-6)] md:pb-[var(--ram-space-12)] relative z-[1] mx-auto flex w-full max-w-[1080px] flex-col gap-[var(--ram-space-7)] px-[var(--ram-space-4)] pt-[var(--ram-space-4)] pb-[var(--ram-space-10)]"
+      class="md:gap-[var(--ram-space-10)] md:px-[var(--ram-space-6)] md:pt-[var(--ram-space-6)] md:pb-[var(--ram-space-12)] relative z-[1] mx-auto flex w-full max-w-[1080px] flex-col gap-[var(--ram-space-7)] px-[var(--ram-space-2)] pt-[var(--ram-space-4)] pb-[var(--ram-space-10)]"
     >
       <RamTopNav
         brand="Ramune UI"
@@ -112,7 +118,7 @@ const typeVariants = [
       >
         <RamMixedHeading
           eyebrow="COMPONENTS"
-          title="Ramune UI プレビュー"
+          title="Ramune UIプレビュー"
           subtitle="Component Gallery"
           size="XL"
         />
@@ -127,14 +133,16 @@ const typeVariants = [
           subtitle="Type Scale"
           size="M"
         />
-        <RamGlass :inset="28" class="w-full">
+        <RamGlass :inset="28">
           <div class="md:gap-[18px] flex flex-col gap-[var(--ram-space-3)]">
             <div
               v-for="t in typeVariants"
               :key="t.variant"
               class="gap-1.5 pb-3.5 last:pb-0 md:grid-cols-[120px_minmax(0,1fr)] md:items-baseline md:gap-4 grid grid-cols-[minmax(0,1fr)] [border-bottom:1px_dashed_var(--ram-border)] last:border-b-0 [&>*]:block [&>*]:w-full [&>*]:max-w-full [&>*]:break-normal [&>*]:[overflow-wrap:anywhere]"
             >
-              <RamType variant="mono" :color="'var(--ram-subtle)'">{{ t.variant }}</RamType>
+              <RamType variant="mono" :color="'var(--ram-subtle)'">
+                {{ t.variant }}
+              </RamType>
               <RamType :variant="t.variant">{{ t.sample }}</RamType>
             </div>
           </div>
@@ -173,10 +181,19 @@ const typeVariants = [
 
       <!-- Buttons -->
       <section class="md:gap-5 flex flex-col gap-[var(--ram-space-4)]">
-        <RamMixedHeading eyebrow="03 / BUTTON" title="ボタン" subtitle="Button" size="M" />
+        <RamMixedHeading
+          eyebrow="03 / BUTTON"
+          title="ボタン"
+          subtitle="Button"
+          size="M"
+        />
         <RamGlass :inset="28">
           <div class="gap-3 flex flex-wrap [&>*]:max-w-full">
-            <RamButton v-for="b in buttonVariants" :key="b.variant" :variant="b.variant">
+            <RamButton
+              v-for="b in buttonVariants"
+              :key="b.variant"
+              :variant="b.variant"
+            >
               {{ b.label }}
             </RamButton>
             <RamButton variant="icon" icon="✨" aria-label="魔法" />
@@ -193,20 +210,40 @@ const typeVariants = [
 
       <!-- Badge -->
       <section class="md:gap-5 flex flex-col gap-[var(--ram-space-4)]">
-        <RamMixedHeading eyebrow="04 / BADGE" title="バッジ" subtitle="Status Badge" size="M" />
+        <RamMixedHeading
+          eyebrow="04 / BADGE"
+          title="バッジ"
+          subtitle="Status Badge"
+          size="M"
+        />
         <RamGlass :inset="28">
           <div class="gap-3 flex flex-wrap [&>*]:max-w-full">
-            <RamBadge v-for="t in badgeTones" :key="`soft-${t}`" :tone="t" variant="soft">
+            <RamBadge
+              v-for="t in badgeTones"
+              :key="`soft-${t}`"
+              :tone="t"
+              variant="soft"
+            >
               {{ t }}
             </RamBadge>
           </div>
           <div class="mt-3.5 gap-3 flex flex-wrap [&>*]:max-w-full">
-            <RamBadge v-for="t in badgeTones" :key="`solid-${t}`" :tone="t" variant="solid">
+            <RamBadge
+              v-for="t in badgeTones"
+              :key="`solid-${t}`"
+              :tone="t"
+              variant="solid"
+            >
               {{ t }}
             </RamBadge>
           </div>
           <div class="mt-3.5 gap-3 flex flex-wrap [&>*]:max-w-full">
-            <RamBadge v-for="t in badgeTones" :key="`outline-${t}`" :tone="t" variant="outline">
+            <RamBadge
+              v-for="t in badgeTones"
+              :key="`outline-${t}`"
+              :tone="t"
+              variant="outline"
+            >
               {{ t }}
             </RamBadge>
           </div>
@@ -233,14 +270,20 @@ const typeVariants = [
         >
           <RamGlass :inset="24">
             <RamType variant="label" :color="'var(--ram-muted)'">SIZES</RamType>
-            <div class="mt-3.5 gap-3 flex flex-wrap items-center [&>*]:max-w-full">
+            <div
+              class="mt-3.5 gap-3 flex flex-wrap items-center [&>*]:max-w-full"
+            >
               <RamAvatar name="Aki" :size="28" />
               <RamAvatar name="Mei" :size="36" />
               <RamAvatar name="Riku" :size="48" />
               <RamAvatar name="Yui" :size="64" />
             </div>
-            <RamType variant="label" :color="'var(--ram-muted)'" class="mt-3"> STATUS </RamType>
-            <div class="mt-3.5 gap-3 flex flex-wrap items-center [&>*]:max-w-full">
+            <RamType variant="label" :color="'var(--ram-muted)'" class="mt-3">
+              STATUS
+            </RamType>
+            <div
+              class="mt-3.5 gap-3 flex flex-wrap items-center [&>*]:max-w-full"
+            >
               <RamAvatar name="On" status="online" :size="40" />
               <RamAvatar name="Aw" status="away" :size="40" />
               <RamAvatar name="Bu" status="busy" :size="40" />
@@ -249,7 +292,9 @@ const typeVariants = [
           </RamGlass>
           <RamGlass :inset="24">
             <RamType variant="label" :color="'var(--ram-muted)'">GROUP</RamType>
-            <div class="mt-3.5 gap-3 flex flex-wrap items-center [&>*]:max-w-full">
+            <div
+              class="mt-3.5 gap-3 flex flex-wrap items-center [&>*]:max-w-full"
+            >
               <RamAvatarGroup :users="users" :max="4" :size="40" />
             </div>
             <RamType variant="bodyS" :color="'var(--ram-muted)'" class="mt-3">
@@ -261,9 +306,16 @@ const typeVariants = [
 
       <!-- Tabs -->
       <section class="md:gap-5 flex flex-col gap-[var(--ram-space-4)]">
-        <RamMixedHeading eyebrow="06 / TABS" title="タブ" subtitle="Tabs" size="M" />
+        <RamMixedHeading
+          eyebrow="06 / TABS"
+          title="タブ"
+          subtitle="Tabs"
+          size="M"
+        />
         <RamGlass :inset="28">
-          <RamType variant="label" :color="'var(--ram-muted)'">SEGMENTED</RamType>
+          <RamType variant="label" :color="'var(--ram-muted)'"
+            >SEGMENTED</RamType
+          >
           <div class="mt-3.5 gap-3 flex flex-wrap [&>*]:max-w-full">
             <RamTabs
               v-model="tabSeg"
@@ -274,7 +326,9 @@ const typeVariants = [
               ]"
             />
           </div>
-          <RamType variant="label" :color="'var(--ram-muted)'" class="mt-3"> UNDERLINE </RamType>
+          <RamType variant="label" :color="'var(--ram-muted)'" class="mt-3">
+            UNDERLINE
+          </RamType>
           <div class="mt-3.5 gap-3 flex flex-wrap [&>*]:max-w-full">
             <RamTabs
               v-model="tabUnderline"
@@ -298,15 +352,21 @@ const typeVariants = [
           subtitle="Side Navigation"
           size="M"
         />
-        <div class="gap-4 md:grid-cols-[280px_1fr] md:gap-5 grid grid-cols-[minmax(0,1fr)]">
+        <div
+          class="gap-4 md:grid-cols-[280px_1fr] md:gap-5 grid grid-cols-[minmax(0,1fr)]"
+        >
           <RamSideNav
             :sections="sideNavSections"
             :active="sideNavActive"
             @nav="sideNavActive = $event"
           />
           <RamGlass :inset="24">
-            <RamType variant="label" :color="'var(--ram-muted)'">SELECTED</RamType>
-            <RamType variant="headingM" class="mt-3">{{ sideNavActive }}</RamType>
+            <RamType variant="label" :color="'var(--ram-muted)'"
+              >SELECTED</RamType
+            >
+            <RamType variant="headingM" class="mt-3">{{
+              sideNavActive
+            }}</RamType>
             <RamType variant="bodyM" :color="'var(--ram-muted)'">
               サイドナビの選択値が更新されています。
             </RamType>
@@ -326,29 +386,41 @@ const typeVariants = [
           class="gap-4 md:grid-cols-[repeat(auto-fit,minmax(280px,1fr))] md:gap-5 grid grid-cols-[minmax(0,1fr)]"
         >
           <RamGlass :inset="24" hover>
-            <RamType variant="label" :color="'var(--ram-primary)'">GLASS</RamType>
+            <RamType variant="label" :color="'var(--ram-primary)'"
+              >GLASS</RamType
+            >
             <RamType variant="headingM" class="mt-3">標準のガラス面</RamType>
             <RamType variant="bodyM" :color="'var(--ram-muted)'">
               背景blobの色を透過して拾う標準のサーフェスです。
             </RamType>
           </RamGlass>
           <RamGlass :inset="24" strong hover>
-            <RamType variant="label" :color="'var(--ram-secondary)'">GLASS STRONG</RamType>
-            <RamType variant="headingM" class="mt-3">読みやすいガラス面</RamType>
+            <RamType variant="label" :color="'var(--ram-secondary)'"
+              >GLASS STRONG</RamType
+            >
+            <RamType variant="headingM" class="mt-3"
+              >読みやすいガラス面</RamType
+            >
             <RamType variant="bodyM" :color="'var(--ram-muted)'">
               長文やフォームに使う、コントラストを強めた面。
             </RamType>
           </RamGlass>
           <RamPrism color="var(--ram-sky)" :padding="24">
-            <RamType variant="label" :color="'var(--ram-sky)'">PRISM / SKY</RamType>
+            <RamType variant="label" :color="'var(--ram-sky)'"
+              >PRISM / SKY</RamType
+            >
             <RamType variant="headingM" class="mt-3">プリズム表面</RamType>
             <RamType variant="bodyM" :color="'var(--ram-muted)'">
               虹色のシーンを纏った装飾的なサーフェス。
             </RamType>
           </RamPrism>
           <RamPrism color="var(--ram-accent)" :padding="24">
-            <RamType variant="label" :color="'var(--ram-accent)'">PRISM / ACCENT</RamType>
-            <RamType variant="headingM" class="mt-3">アクセントカラー版</RamType>
+            <RamType variant="label" :color="'var(--ram-accent)'"
+              >PRISM / ACCENT</RamType
+            >
+            <RamType variant="headingM" class="mt-3"
+              >アクセントカラー版</RamType
+            >
             <RamType variant="bodyM" :color="'var(--ram-muted)'">
               色をpropで切り替えできます。
             </RamType>

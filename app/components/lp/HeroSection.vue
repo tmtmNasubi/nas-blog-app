@@ -17,11 +17,21 @@ withDefaults(
   <section class="lp-hero">
     <div class="lp-hero__inner">
       <RamBadge tone="primary" variant="soft">v0.1 · 2026</RamBadge>
-      <RamMixedHeading :eyebrow="eyebrow" :title="title" :subtitle="subtitle" size="XL" as="h1" />
+      <RamMixedHeading
+        :eyebrow="eyebrow"
+        :title="title"
+        :subtitle="subtitle"
+        size="XL"
+        as="h1"
+      />
       <div class="lp-hero__actions">
         <RamButton as="link" to="#works" size="lg">Works を見る</RamButton>
-        <RamButton as="link" to="#about" variant="secondary" size="lg"> About </RamButton>
-        <RamButton as="link" to="#articles" variant="ghost" size="lg"> Articles </RamButton>
+        <RamButton as="link" to="#about" variant="secondary" size="lg">
+          About
+        </RamButton>
+        <RamButton as="link" to="#articles" variant="ghost" size="lg">
+          Articles
+        </RamButton>
       </div>
     </div>
   </section>
@@ -44,7 +54,6 @@ withDefaults(
   z-index: 1;
   display: grid;
   gap: var(--ram-space-4);
-  max-width: 760px;
 }
 
 .lp-hero__actions {

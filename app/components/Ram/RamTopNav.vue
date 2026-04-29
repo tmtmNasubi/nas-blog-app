@@ -57,7 +57,10 @@ if (import.meta.client) {
           <NuxtLink
             v-if="normalize(raw).to"
             :to="normalize(raw).to!"
-            :class="['ram-topnav__link', { 'ram-topnav__link--active': isActive(raw) }]"
+            :class="[
+              'ram-topnav__link',
+              { 'ram-topnav__link--active': isActive(raw) },
+            ]"
             :aria-current="isActive(raw) ? 'page' : undefined"
             @click="onClick(normalize(raw))"
           >
@@ -66,7 +69,10 @@ if (import.meta.client) {
           <a
             v-else-if="normalize(raw).href"
             :href="normalize(raw).href"
-            :class="['ram-topnav__link', { 'ram-topnav__link--active': isActive(raw) }]"
+            :class="[
+              'ram-topnav__link',
+              { 'ram-topnav__link--active': isActive(raw) },
+            ]"
             :aria-current="isActive(raw) ? 'page' : undefined"
             :target="normalize(raw).external ? '_blank' : undefined"
             :rel="normalize(raw).external ? 'noopener noreferrer' : undefined"
@@ -77,7 +83,10 @@ if (import.meta.client) {
           <button
             v-else
             type="button"
-            :class="['ram-topnav__link', { 'ram-topnav__link--active': isActive(raw) }]"
+            :class="[
+              'ram-topnav__link',
+              { 'ram-topnav__link--active': isActive(raw) },
+            ]"
             :aria-current="isActive(raw) ? 'page' : undefined"
             @click="onClick(normalize(raw))"
           >
@@ -96,9 +105,15 @@ if (import.meta.client) {
         :aria-label="isOpen ? 'メニューを閉じる' : 'メニューを開く'"
         @click="isOpen = !isOpen"
       >
-        <span :class="['ram-topnav__bar', { 'ram-topnav__bar--open': isOpen }]" />
-        <span :class="['ram-topnav__bar', { 'ram-topnav__bar--open': isOpen }]" />
-        <span :class="['ram-topnav__bar', { 'ram-topnav__bar--open': isOpen }]" />
+        <span
+          :class="['ram-topnav__bar', { 'ram-topnav__bar--open': isOpen }]"
+        />
+        <span
+          :class="['ram-topnav__bar', { 'ram-topnav__bar--open': isOpen }]"
+        />
+        <span
+          :class="['ram-topnav__bar', { 'ram-topnav__bar--open': isOpen }]"
+        />
       </button>
     </div>
 
@@ -106,7 +121,11 @@ if (import.meta.client) {
       <Teleport to="body">
         <Transition name="ram-topnav-drawer">
           <div v-if="isOpen" class="ram-topnav__overlay-wrap">
-            <div class="ram-topnav__overlay" aria-hidden="true" @click="isOpen = false" />
+            <div
+              class="ram-topnav__overlay"
+              aria-hidden="true"
+              @click="isOpen = false"
+            />
             <div
               id="ram-topnav-drawer"
               class="ram-topnav__drawer"
@@ -141,7 +160,11 @@ if (import.meta.client) {
                     ]"
                     :aria-current="isActive(raw) ? 'page' : undefined"
                     :target="normalize(raw).external ? '_blank' : undefined"
-                    :rel="normalize(raw).external ? 'noopener noreferrer' : undefined"
+                    :rel="
+                      normalize(raw).external
+                        ? 'noopener noreferrer'
+                        : undefined
+                    "
                     @click="onClick(normalize(raw))"
                   >
                     {{ normalize(raw).label }}
@@ -175,6 +198,7 @@ if (import.meta.client) {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: auto;
   gap: 8px;
   padding: 8px 14px;
   border: 1px solid var(--ram-glass-border);
@@ -182,8 +206,6 @@ if (import.meta.client) {
   box-shadow: var(--ram-shadow);
   position: relative;
   isolation: isolate;
-  overflow: hidden;
-  max-width: 100%;
 }
 
 .ram-topnav__backdrop {

@@ -17,17 +17,22 @@ const features = [
   {
     icon: "◇",
     title: "Design Systems",
-    description: "コンポーネントとデザイントークンを起点にした、楽しい UI を作っています。",
+    description:
+      "コンポーネントとデザイントークンを起点にした、楽しい UI を作っています。",
   },
   {
     icon: "✎",
     title: "Web Craft",
-    description: "Nuxt / Vue を中心に、パフォーマンスとアクセシビリティに配慮した実装が好きです。",
+    description:
+      "Nuxt / Vue を中心に、パフォーマンスとアクセシビリティに配慮した実装が好きです。",
   },
 ];
 
 const { data: works } = await useAsyncData("lp-works", () =>
-  queryCollection("content").where("path", "LIKE", "/works/%").order("order", "ASC").all(),
+  queryCollection("content")
+    .where("path", "LIKE", "/works/%")
+    .order("order", "ASC")
+    .all(),
 );
 
 const { data: articles } = await useAsyncData("lp-articles", () =>
@@ -68,7 +73,9 @@ useSeoMeta({
       class="lp__nav"
       @nav="onClickNavigation"
     >
-      <RamButton variant="ghost" size="md" @click="toggle">{{ themeIcon }}</RamButton>
+      <RamButton variant="ghost" size="md" @click="toggle">{{
+        themeIcon
+      }}</RamButton>
     </RamTopNav>
 
     <LpHeroSection />
@@ -122,10 +129,14 @@ useSeoMeta({
         />
       </div>
       <RamGlass v-else class="lp__empty">
-        <RamType variant="bodyM" :color="'var(--ram-muted)'"> 記事は近日公開予定です。 </RamType>
+        <RamType variant="bodyM" :color="'var(--ram-muted)'">
+          記事は近日公開予定です。
+        </RamType>
       </RamGlass>
       <div class="lp__cta-row">
-        <RamButton as="link" to="/blog-index" variant="ghost" size="md"> すべての記事 → </RamButton>
+        <RamButton as="link" to="/blog-index" variant="ghost" size="md">
+          すべての記事 →
+        </RamButton>
       </div>
     </section>
 
@@ -143,7 +154,6 @@ useSeoMeta({
   display: grid;
   gap: var(--ram-space-7);
   padding: var(--ram-space-4);
-  max-width: 1120px;
   margin-inline: auto;
 }
 
