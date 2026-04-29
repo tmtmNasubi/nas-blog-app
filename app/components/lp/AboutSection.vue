@@ -27,10 +27,17 @@ withDefaults(
       </div>
       <RamType variant="bodyM">{{ bio }}</RamType>
       <div class="lp-about__links">
-        <RamButton as="link" to="https://github.com/tmtmNasubi" variant="secondary" size="md">
+        <RamButton
+          as="link"
+          to="https://github.com/tmtmNasubi"
+          variant="secondary"
+          size="md"
+        >
           GitHub
         </RamButton>
-        <RamButton as="link" to="/about" variant="ghost" size="md"> 詳しく見る </RamButton>
+        <RamButton as="link" to="/about" variant="ghost" size="md">
+          詳しく見る
+        </RamButton>
       </div>
     </div>
   </RamGlass>
@@ -50,7 +57,7 @@ withDefaults(
   gap: var(--ram-space-3);
 }
 
-@media (min-width: var(--ram-bp-md)) {
+@media (min-width: 768px) {
   .lp-about__head {
     flex-direction: row;
     align-items: center;

@@ -35,7 +35,11 @@ const rootStyle = computed<CSSProperties>(() => ({
 </script>
 
 <template>
-  <component :is="as" :class="['ram-type', `ram-type--${variant}`]" :style="rootStyle">
+  <component
+    :is="as"
+    :class="['ram-type', `ram-type--${variant}`]"
+    :style="rootStyle"
+  >
     <slot />
   </component>
 </template>
@@ -132,7 +136,7 @@ const rootStyle = computed<CSSProperties>(() => ({
   line-height: 1.55;
 }
 
-@media (min-width: var(--ram-bp-md)) {
+@media (min-width: 768px) {
   .ram-type--displayXL {
     font-size: 56px;
   }

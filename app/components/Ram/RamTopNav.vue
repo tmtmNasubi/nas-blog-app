@@ -353,7 +353,7 @@ if (import.meta.client) {
   transform: translateY(-7px) rotate(-45deg);
 }
 
-@media (min-width: var(--ram-bp-md)) {
+@media (min-width: 768px) {
   .ram-topnav {
     padding: 10px 18px;
   }
@@ -442,7 +442,7 @@ if (import.meta.client) {
   color: var(--ram-primary);
 }
 
-@media (min-width: var(--ram-bp-md)) {
+@media (min-width: 768px) {
   .ram-topnav__overlay,
   .ram-topnav__drawer {
     display: none;

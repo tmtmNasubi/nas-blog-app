@@ -180,7 +180,7 @@ useSeoMeta({
   grid-template-columns: 1fr;
 }
 
-@media (min-width: var(--ram-bp-md)) {
+@media (min-width: 768px) {
   .lp {
     gap: var(--ram-space-10);
     padding: var(--ram-space-6);
@@ -193,7 +193,7 @@ useSeoMeta({
   }
 }
 
-@media (min-width: var(--ram-bp-lg)) {
+@media (min-width: 1120px) {
   .lp__grid--3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }

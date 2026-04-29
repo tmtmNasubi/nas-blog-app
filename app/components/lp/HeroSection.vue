@@ -63,7 +63,7 @@ withDefaults(
   margin-top: var(--ram-space-3);
 }
 
-@media (min-width: var(--ram-bp-md)) {
+@media (min-width: 768px) {
   .lp-hero {
     min-height: 80svh;
     padding: var(--ram-space-10) var(--ram-space-6);
