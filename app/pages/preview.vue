@@ -430,7 +430,10 @@ const typeVariants = [
 }
 
 .preview__type-row > * {
+  display: block;
+  width: 100%;
   min-width: 0;
+  max-width: 100%;
   overflow-wrap: anywhere;
   word-break: normal;
 }

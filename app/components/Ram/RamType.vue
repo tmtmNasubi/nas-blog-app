@@ -131,7 +131,6 @@ const rootStyle = computed<CSSProperties>(() => ({
   font-size: 12px;
   font-weight: 500;
   line-height: 1.55;
-  word-break: break-all;
 }
 
 @media (min-width: 768px) {

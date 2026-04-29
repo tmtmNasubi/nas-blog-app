@@ -35,6 +35,8 @@ const rootStyle = computed<CSSProperties>(() => ({
 <style scoped>
 .ram-glass {
   position: relative;
+  width: 100%;
+  min-width: 0;
   border-radius: var(--ram-radius-lg);
   border: 1px solid var(--ram-glass-border);
   box-shadow: var(--ram-shadow);
@@ -80,5 +82,6 @@ const rootStyle = computed<CSSProperties>(() => ({
   position: relative;
   z-index: 2;
   color: var(--ram-text);
+  min-width: 0;
 }
 </style>

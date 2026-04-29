@@ -14,6 +14,6 @@
   padding: 1px 6px;
   color: var(--ram-accent);
   overflow-wrap: anywhere;
-  word-break: break-all;
+  word-break: normal;
 }
 </style>
