@@ -97,7 +97,7 @@ const typeVariants = [
 <template>
   <div class="relative isolate min-h-screen">
     <div
-      class="md:gap-[var(--ram-space-10)] md:px-[var(--ram-space-6)] md:pt-[var(--ram-space-6)] md:pb-[var(--ram-space-12)] relative z-[1] mx-auto flex w-full max-w-[1080px] flex-col gap-[var(--ram-space-7)] px-[var(--ram-space-2)] pt-[var(--ram-space-4)] pb-[var(--ram-space-10)]"
+      class="md:gap-[var(--ram-space-10)] md:px-[var(--ram-space-6)] md:pt-[var(--ram-space-6)] md:pb-[var(--ram-space-12)] relative z-[1] mx-auto flex max-w-[1080px] flex-col gap-[var(--ram-space-7)] px-[var(--ram-space-2)] pt-[var(--ram-space-4)] pb-[var(--ram-space-10)]"
     >
       <RamTopNav
         brand="Ramune UI"
@@ -158,7 +158,7 @@ const typeVariants = [
           size="M"
         />
         <div
-          class="gap-4 md:grid-cols-[repeat(auto-fit,minmax(280px,1fr))] md:gap-5 grid grid-cols-[minmax(0,1fr)]"
+          class="gap-4 w-full md:grid-cols-[repeat(auto-fit,minmax(280px,1fr))] md:gap-5 grid grid-cols-[minmax(0,1fr)]"
         >
           <RamGlass :inset="24">
             <RamMixedHeading
@@ -383,7 +383,7 @@ const typeVariants = [
           size="M"
         />
         <div
-          class="gap-4 md:grid-cols-[repeat(auto-fit,minmax(280px,1fr))] md:gap-5 grid grid-cols-[minmax(0,1fr)]"
+          class="gap-4 w-full min-w-0 md:grid-cols-2 md:gap-5 lg:grid-cols-[repeat(auto-fit,minmax(280px,1fr))] grid grid-cols-[minmax(0,1fr)]"
         >
           <RamGlass :inset="24" hover>
             <RamType variant="label" :color="'var(--ram-primary)'"
