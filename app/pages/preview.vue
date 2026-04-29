@@ -95,17 +95,19 @@ const typeVariants = [
 </script>
 
 <template>
-  <div class="preview">
+  <div class="relative min-h-screen isolate">
     <RamBlobBg />
 
-    <div class="preview__inner">
+    <div
+      class="relative z-[1] mx-auto flex w-full max-w-[1080px] flex-col gap-[var(--ram-space-7)] px-[var(--ram-space-4)] pt-[var(--ram-space-4)] pb-[var(--ram-space-10)] md:gap-[var(--ram-space-10)] md:px-[var(--ram-space-6)] md:pt-[var(--ram-space-6)] md:pb-[var(--ram-space-12)]"
+    >
       <RamTopNav
         brand="Ramune UI"
         :links="topNavLinks"
         :active="topNavActive"
         @nav="topNavActive = $event"
       >
-        <div class="preview__topnav-actions">
+        <div class="hidden items-center gap-2 md:flex">
           <RamButton variant="ghost" size="sm" @click="toggle">
             {{ mode === "light" ? "🌙 Dark" : "☀️ Light" }}
           </RamButton>
@@ -113,7 +115,7 @@ const typeVariants = [
         </div>
       </RamTopNav>
 
-      <header class="preview__header">
+      <header class="mt-[var(--ram-space-3)] flex flex-col gap-[var(--ram-space-3)] md:mt-6 md:gap-4">
         <RamMixedHeading
           eyebrow="COMPONENTS"
           title="Ramune UI プレビュー"
@@ -124,19 +126,19 @@ const typeVariants = [
       </header>
 
       <!-- Typography -->
-      <section class="preview__section">
+      <section class="flex flex-col gap-[var(--ram-space-4)] md:gap-5">
         <RamMixedHeading
           eyebrow="01 / TYPOGRAPHY"
           title="タイポグラフィ"
           subtitle="Type Scale"
           size="M"
         />
-        <RamGlass :inset="28" class="preview__card">
-          <div class="preview__type-list">
+        <RamGlass :inset="28" class="w-full">
+          <div class="flex flex-col gap-[var(--ram-space-3)] md:gap-[18px]">
             <div
               v-for="t in typeVariants"
               :key="t.variant"
-              class="preview__type-row"
+              class="grid grid-cols-[minmax(0,1fr)] gap-1.5 [border-bottom:1px_dashed_var(--ram-border)] pb-3.5 last:border-b-0 last:pb-0 md:grid-cols-[120px_minmax(0,1fr)] md:items-baseline md:gap-4 [&>*]:block [&>*]:w-full [&>*]:max-w-full [&>*]:[overflow-wrap:anywhere] [&>*]:break-normal"
             >
               <RamType variant="mono" :color="'var(--ram-subtle)'">{{
                 t.variant
@@ -148,14 +150,14 @@ const typeVariants = [
       </section>
 
       <!-- Mixed Heading -->
-      <section class="preview__section">
+      <section class="flex flex-col gap-[var(--ram-space-4)] md:gap-5">
         <RamMixedHeading
           eyebrow="02 / HEADING"
           title="混植見出し"
           subtitle="Mixed Heading"
           size="M"
         />
-        <div class="preview__grid">
+        <div class="grid grid-cols-[minmax(0,1fr)] gap-4 md:grid-cols-[repeat(auto-fit,minmax(280px,1fr))] md:gap-5">
           <RamGlass :inset="24">
             <RamMixedHeading
               eyebrow="SETTINGS"
@@ -176,7 +178,7 @@ const typeVariants = [
       </section>
 
       <!-- Buttons -->
-      <section class="preview__section">
+      <section class="flex flex-col gap-[var(--ram-space-4)] md:gap-5">
         <RamMixedHeading
           eyebrow="03 / BUTTON"
           title="ボタン"
@@ -184,7 +186,7 @@ const typeVariants = [
           size="M"
         />
         <RamGlass :inset="28">
-          <div class="preview__row">
+          <div class="flex flex-wrap gap-3 [&>*]:max-w-full">
             <RamButton
               v-for="b in buttonVariants"
               :key="b.variant"
@@ -194,7 +196,7 @@ const typeVariants = [
             </RamButton>
             <RamButton variant="icon" icon="✨" aria-label="魔法" />
           </div>
-          <div class="preview__row preview__row--mt">
+          <div class="mt-3.5 flex flex-wrap gap-3 [&>*]:max-w-full">
             <RamButton size="sm">小</RamButton>
             <RamButton size="md">中</RamButton>
             <RamButton size="lg">大</RamButton>
@@ -205,7 +207,7 @@ const typeVariants = [
       </section>
 
       <!-- Badge -->
-      <section class="preview__section">
+      <section class="flex flex-col gap-[var(--ram-space-4)] md:gap-5">
         <RamMixedHeading
           eyebrow="04 / BADGE"
           title="バッジ"
@@ -213,7 +215,7 @@ const typeVariants = [
           size="M"
         />
         <RamGlass :inset="28">
-          <div class="preview__row">
+          <div class="flex flex-wrap gap-3 [&>*]:max-w-full">
             <RamBadge
               v-for="t in badgeTones"
               :key="`soft-${t}`"
@@ -223,7 +225,7 @@ const typeVariants = [
               {{ t }}
             </RamBadge>
           </div>
-          <div class="preview__row preview__row--mt">
+          <div class="mt-3.5 flex flex-wrap gap-3 [&>*]:max-w-full">
             <RamBadge
               v-for="t in badgeTones"
               :key="`solid-${t}`"
@@ -233,7 +235,7 @@ const typeVariants = [
               {{ t }}
             </RamBadge>
           </div>
-          <div class="preview__row preview__row--mt">
+          <div class="mt-3.5 flex flex-wrap gap-3 [&>*]:max-w-full">
             <RamBadge
               v-for="t in badgeTones"
               :key="`outline-${t}`"
@@ -243,7 +245,7 @@ const typeVariants = [
               {{ t }}
             </RamBadge>
           </div>
-          <div class="preview__row preview__row--mt">
+          <div class="mt-3.5 flex flex-wrap gap-3 [&>*]:max-w-full">
             <RamBadge tone="accent" variant="dot">完了</RamBadge>
             <RamBadge tone="sun" variant="dot">確認中</RamBadge>
             <RamBadge tone="sky" variant="dot">処理中</RamBadge>
@@ -254,17 +256,17 @@ const typeVariants = [
       </section>
 
       <!-- Avatar -->
-      <section class="preview__section">
+      <section class="flex flex-col gap-[var(--ram-space-4)] md:gap-5">
         <RamMixedHeading
           eyebrow="05 / AVATAR"
           title="アバター"
           subtitle="Avatar / Avatar Group"
           size="M"
         />
-        <div class="preview__grid">
+        <div class="grid grid-cols-[minmax(0,1fr)] gap-4 md:grid-cols-[repeat(auto-fit,minmax(280px,1fr))] md:gap-5">
           <RamGlass :inset="24">
             <RamType variant="label" :color="'var(--ram-muted)'">SIZES</RamType>
-            <div class="preview__row preview__row--mt preview__row--align">
+            <div class="mt-3.5 flex flex-wrap items-center gap-3 [&>*]:max-w-full">
               <RamAvatar name="Aki" :size="28" />
               <RamAvatar name="Mei" :size="36" />
               <RamAvatar name="Riku" :size="48" />
@@ -273,11 +275,11 @@ const typeVariants = [
             <RamType
               variant="label"
               :color="'var(--ram-muted)'"
-              class="preview__mt"
+              class="mt-3"
             >
               STATUS
             </RamType>
-            <div class="preview__row preview__row--mt preview__row--align">
+            <div class="mt-3.5 flex flex-wrap items-center gap-3 [&>*]:max-w-full">
               <RamAvatar name="On" status="online" :size="40" />
               <RamAvatar name="Aw" status="away" :size="40" />
               <RamAvatar name="Bu" status="busy" :size="40" />
@@ -286,13 +288,13 @@ const typeVariants = [
           </RamGlass>
           <RamGlass :inset="24">
             <RamType variant="label" :color="'var(--ram-muted)'">GROUP</RamType>
-            <div class="preview__row preview__row--mt preview__row--align">
+            <div class="mt-3.5 flex flex-wrap items-center gap-3 [&>*]:max-w-full">
               <RamAvatarGroup :users="users" :max="4" :size="40" />
             </div>
             <RamType
               variant="bodyS"
               :color="'var(--ram-muted)'"
-              class="preview__mt"
+              class="mt-3"
             >
               チームメンバー {{ users.length }} 人
             </RamType>
@@ -301,7 +303,7 @@ const typeVariants = [
       </section>
 
       <!-- Tabs -->
-      <section class="preview__section">
+      <section class="flex flex-col gap-[var(--ram-space-4)] md:gap-5">
         <RamMixedHeading
           eyebrow="06 / TABS"
           title="タブ"
@@ -312,7 +314,7 @@ const typeVariants = [
           <RamType variant="label" :color="'var(--ram-muted)'"
             >SEGMENTED</RamType
           >
-          <div class="preview__row preview__row--mt">
+          <div class="mt-3.5 flex flex-wrap gap-3 [&>*]:max-w-full">
             <RamTabs
               v-model="tabSeg"
               :tabs="[
@@ -325,11 +327,11 @@ const typeVariants = [
           <RamType
             variant="label"
             :color="'var(--ram-muted)'"
-            class="preview__mt"
+            class="mt-3"
           >
             UNDERLINE
           </RamType>
-          <div class="preview__row preview__row--mt">
+          <div class="mt-3.5 flex flex-wrap gap-3 [&>*]:max-w-full">
             <RamTabs
               v-model="tabUnderline"
               variant="underline"
@@ -345,14 +347,14 @@ const typeVariants = [
       </section>
 
       <!-- Side Nav -->
-      <section class="preview__section">
+      <section class="flex flex-col gap-[var(--ram-space-4)] md:gap-5">
         <RamMixedHeading
           eyebrow="07 / SIDE NAV"
           title="サイドナビ"
           subtitle="Side Navigation"
           size="M"
         />
-        <div class="preview__sidenav-grid">
+        <div class="grid grid-cols-[minmax(0,1fr)] gap-4 md:grid-cols-[280px_1fr] md:gap-5">
           <RamSideNav
             :sections="sideNavSections"
             :active="sideNavActive"
@@ -362,7 +364,7 @@ const typeVariants = [
             <RamType variant="label" :color="'var(--ram-muted)'"
               >SELECTED</RamType
             >
-            <RamType variant="headingM" class="preview__mt">{{
+            <RamType variant="headingM" class="mt-3">{{
               sideNavActive
             }}</RamType>
             <RamType variant="bodyM" :color="'var(--ram-muted)'">
@@ -373,19 +375,19 @@ const typeVariants = [
       </section>
 
       <!-- Surfaces: Glass / Prism -->
-      <section class="preview__section">
+      <section class="flex flex-col gap-[var(--ram-space-4)] md:gap-5">
         <RamMixedHeading
           eyebrow="08 / SURFACE"
           title="サーフェス"
           subtitle="Glass / Prism"
           size="M"
         />
-        <div class="preview__grid">
+        <div class="grid grid-cols-[minmax(0,1fr)] gap-4 md:grid-cols-[repeat(auto-fit,minmax(280px,1fr))] md:gap-5">
           <RamGlass :inset="24" hover>
             <RamType variant="label" :color="'var(--ram-primary)'"
               >GLASS</RamType
             >
-            <RamType variant="headingM" class="preview__mt"
+            <RamType variant="headingM" class="mt-3"
               >標準のガラス面</RamType
             >
             <RamType variant="bodyM" :color="'var(--ram-muted)'">
@@ -396,7 +398,7 @@ const typeVariants = [
             <RamType variant="label" :color="'var(--ram-secondary)'"
               >GLASS STRONG</RamType
             >
-            <RamType variant="headingM" class="preview__mt"
+            <RamType variant="headingM" class="mt-3"
               >読みやすいガラス面</RamType
             >
             <RamType variant="bodyM" :color="'var(--ram-muted)'">
@@ -407,7 +409,7 @@ const typeVariants = [
             <RamType variant="label" :color="'var(--ram-sky)'"
               >PRISM / SKY</RamType
             >
-            <RamType variant="headingM" class="preview__mt"
+            <RamType variant="headingM" class="mt-3"
               >プリズム表面</RamType
             >
             <RamType variant="bodyM" :color="'var(--ram-muted)'">
@@ -418,7 +420,7 @@ const typeVariants = [
             <RamType variant="label" :color="'var(--ram-accent)'"
               >PRISM / ACCENT</RamType
             >
-            <RamType variant="headingM" class="preview__mt"
+            <RamType variant="headingM" class="mt-3"
               >アクセントカラー版</RamType
             >
             <RamType variant="bodyM" :color="'var(--ram-muted)'">
@@ -429,7 +431,7 @@ const typeVariants = [
       </section>
 
       <!-- Inline Code -->
-      <section class="preview__section">
+      <section class="flex flex-col gap-[var(--ram-space-4)] md:gap-5">
         <RamMixedHeading
           eyebrow="09 / INLINE CODE"
           title="インラインコード"
@@ -447,7 +449,7 @@ const typeVariants = [
       </section>
 
       <!-- Breadcrumbs -->
-      <section class="preview__section">
+      <section class="flex flex-col gap-[var(--ram-space-4)] md:gap-5">
         <RamMixedHeading
           eyebrow="10 / BREADCRUMBS"
           title="パンくずリスト"
@@ -461,156 +463,3 @@ const typeVariants = [
     </div>
   </div>
 </template>
-
-<style scoped>
-.preview {
-  position: relative;
-  min-height: 100vh;
-  isolation: isolate;
-}
-
-.preview__topnav-actions {
-  display: none;
-  align-items: center;
-  gap: 8px;
-}
-
-@media (min-width: var(--ram-bp-md)) {
-  .preview__topnav-actions {
-    display: flex;
-  }
-}
-
-.preview__inner {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  max-width: 1080px;
-  margin: 0 auto;
-  padding: var(--ram-space-4) var(--ram-space-4) var(--ram-space-10);
-  display: flex;
-  flex-direction: column;
-  gap: var(--ram-space-7);
-}
-
-.preview__header {
-  display: flex;
-  flex-direction: column;
-  gap: var(--ram-space-3);
-  margin-top: var(--ram-space-3);
-}
-
-.preview__section {
-  display: flex;
-  flex-direction: column;
-  gap: var(--ram-space-4);
-}
-
-.preview__card {
-  width: 100%;
-}
-
-.preview__type-list {
-  display: flex;
-  flex-direction: column;
-  gap: var(--ram-space-3);
-}
-
-.preview__type-row {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 6px;
-  padding-bottom: 14px;
-  border-bottom: 1px dashed var(--ram-border);
-}
-
-.preview__type-row > * {
-  display: block;
-  width: 100%;
-
-  max-width: 100%;
-  overflow-wrap: anywhere;
-  word-break: normal;
-}
-
-.preview__type-row:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
-}
-
-.preview__row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.preview__row > * {
-  max-width: 100%;
-}
-
-.preview__row--mt {
-  margin-top: 14px;
-}
-
-.preview__row--align {
-  align-items: center;
-}
-
-.preview__mt {
-  margin-top: 12px;
-}
-
-.preview__grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 16px;
-}
-
-.preview__grid > * {
-}
-
-.preview__sidenav-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 16px;
-}
-
-.preview__sidenav-grid > * {
-}
-
-@media (min-width: var(--ram-bp-md)) {
-  .preview__inner {
-    padding: var(--ram-space-6) var(--ram-space-6) var(--ram-space-12);
-    gap: var(--ram-space-10);
-  }
-
-  .preview__header {
-    gap: 16px;
-    margin-top: 24px;
-  }
-
-  .preview__section {
-    gap: 20px;
-  }
-
-  .preview__type-list {
-    gap: 18px;
-  }
-
-  .preview__type-row {
-    grid-template-columns: 120px minmax(0, 1fr);
-    gap: 16px;
-    align-items: baseline;
-  }
-
-  .preview__grid {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-  }
-
-  .preview__sidenav-grid {
-    grid-template-columns: 280px 1fr;
-    gap: 20px;
-  }
-}
-</style>

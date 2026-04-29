@@ -34,7 +34,7 @@ export default defineNuxtConfig({
     typedPages: true,
   },
   modules: ['@nuxt/content', '@nuxt/eslint', '@nuxt/image', '@nuxt/test-utils'],
-  css: ['~/assets/css/ramune.css'],
+  css: ['~/assets/css/ramune.css', '~/assets/css/tailwind.css'],
   nitro: {
     prerender: {
       crawlLinks: true,

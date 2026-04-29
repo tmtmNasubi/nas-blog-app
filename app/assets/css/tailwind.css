@@ -1,0 +1,5 @@
+@layer theme, utilities;
+
+/* Ramune UI の base styles と競合しないよう、Tailwind Preflight は読み込まない。 */
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
