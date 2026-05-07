@@ -64,4 +64,8 @@ const blobStyle = (b: Blob, i: number): CSSProperties => ({
   opacity: 0.35;
   mix-blend-mode: multiply;
 }
+
+:global(html.ram-dark) .ram-blob-bg__blob {
+  mix-blend-mode: screen;
+}
 </style>
