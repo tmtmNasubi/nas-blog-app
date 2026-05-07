@@ -41,6 +41,7 @@ const rootStyle = computed<CSSProperties>(() => ({
   border-radius: var(--ram-radius-lg);
   border: 1px solid var(--ram-glass-border);
   box-shadow: var(--ram-shadow);
+  overflow: hidden;
   isolation: isolate;
   transition:
     box-shadow var(--ram-motion-base),
