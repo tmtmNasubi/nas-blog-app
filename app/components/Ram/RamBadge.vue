@@ -75,6 +75,7 @@ const rootStyle = computed<CSSProperties>(() => {
 .ram-badge {
   display: inline-flex;
   align-items: center;
+  width: fit-content;
   gap: 6px;
   padding: 3px 10px;
   font-family: var(--ram-font-display);

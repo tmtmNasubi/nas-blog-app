@@ -5,6 +5,10 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap");
 
+html {
+  scroll-behavior: smooth;
+}
+
 /* ── 1. Font stacks ─────────────────────────────────────────── */
 :root {
   --ram-font-display:
@@ -27,6 +31,11 @@
   --ram-space-10: 64px;
   --ram-space-11: 80px;
   --ram-space-12: 120px;
+
+  /* Breakpoints (Tailwind 標準値に準拠 / 参照用) */
+  --ram-bp-sm: 640px;
+  --ram-bp-md: 768px;
+  --ram-bp-lg: 1024px;
 
   /* Radius */
   --ram-radius-none: 0;

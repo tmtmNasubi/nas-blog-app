@@ -35,7 +35,11 @@ const rootStyle = computed<CSSProperties>(() => ({
 </script>
 
 <template>
-  <component :is="as" :class="['ram-type', `ram-type--${variant}`]" :style="rootStyle">
+  <component
+    :is="as"
+    :class="['ram-type', `ram-type--${variant}`]"
+    :style="rootStyle"
+  >
     <slot />
   </component>
 </template>
@@ -45,6 +49,7 @@ const rootStyle = computed<CSSProperties>(() => ({
   margin: 0;
   font-family: var(--ram-font-body);
   letter-spacing: 0;
+  overflow-wrap: anywhere;
 }
 
 .ram-type--displayXL,
@@ -62,13 +67,13 @@ const rootStyle = computed<CSSProperties>(() => ({
 }
 
 .ram-type--displayXL {
-  font-size: 56px;
+  font-size: 40px;
   font-weight: 700;
   line-height: 1.45;
   letter-spacing: -0.01em;
 }
 .ram-type--displayL {
-  font-size: 44px;
+  font-size: 34px;
   font-weight: 700;
   line-height: 1.45;
   letter-spacing: -0.01em;
@@ -94,9 +99,9 @@ const rootStyle = computed<CSSProperties>(() => ({
   line-height: 1.6;
 }
 .ram-type--bodyL {
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 400;
-  line-height: 1.9;
+  line-height: 1.85;
 }
 .ram-type--bodyM {
   font-size: 15px;
@@ -131,17 +136,16 @@ const rootStyle = computed<CSSProperties>(() => ({
   line-height: 1.55;
 }
 
-@media (max-width: 640px) {
+@media (min-width: 768px) {
   .ram-type--displayXL {
-    font-size: 40px;
-    line-height: 1.45;
+    font-size: 56px;
   }
   .ram-type--displayL {
-    font-size: 34px;
+    font-size: 44px;
   }
   .ram-type--bodyL {
-    font-size: 16px;
-    line-height: 1.85;
+    font-size: 17px;
+    line-height: 1.9;
   }
 }
 </style>
