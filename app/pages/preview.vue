@@ -437,10 +437,12 @@ const typeVariants = [
         />
         <RamGlass :inset="28">
           <RamType variant="bodyM">
-            環境変数 <RamInlineCode>DATABASE_URL</RamInlineCode> を設定し、
+            環境変数
+            <RamInlineCode>DATABASE_URL</RamInlineCode> を設定し、
             <RamInlineCode>pnpm dev</RamInlineCode>
             で開発サーバを起動してください。 詳細は
-            <RamInlineCode>https://ramune-ui.dev/docs</RamInlineCode> を参照。
+            <RamInlineCode>https://ramune-ui.dev/docs</RamInlineCode>
+            を参照。
           </RamType>
         </RamGlass>
       </section>
