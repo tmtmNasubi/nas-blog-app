@@ -32,10 +32,10 @@ const { data: articles } = await useAsyncData("lp-articles", () =>
 useSeoMeta({
   title: "nas — Designer / Engineer",
   description:
-    "Liquid Glass の研究と Ramune UI を中心に、Web の表現を探っているデザイナー兼エンジニア nas のポートフォリオサイト。",
+    "Ramune UI を中心に、Web の表現を探っているフロントエンドエンジニア nas のポートフォリオサイト。",
   ogTitle: "nas — Designer / Engineer",
   ogDescription:
-    "Liquid Glass の研究と Ramune UI を中心に、Web の表現を探っているデザイナー兼エンジニア nas のポートフォリオサイト。",
+    "Ramune UI を中心に、Web の表現を探っているフロントエンドエンジニア nas のポートフォリオサイト。",
   ogType: "website",
   ogLocale: "ja_JP",
   twitterCard: "summary_large_image",
