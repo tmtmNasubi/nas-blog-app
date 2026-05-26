@@ -47,7 +47,6 @@ const formattedDate = computed(() => {
   text-decoration: none;
   color: inherit;
   display: block;
-  height: 100%;
 }
 
 .lp-article__glass {

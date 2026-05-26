@@ -5,17 +5,81 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap");
 
-html {
-  scroll-behavior: smooth;
+/* ── 0. Reset ─────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-/* ── 1. Font stacks ─────────────────────────────────────────── */
+* {
+  min-width: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+}
+
+:where(h1, h2, h3, h4, h5, h6, p, figure, blockquote, dl, dd) {
+  margin-block: 0;
+}
+
+:where(ul, ol) {
+  margin-block: 0;
+}
+
+:where(img, picture, video, canvas, svg) {
+  display: block;
+  max-width: 100%;
+}
+
+:where(img, picture, video, canvas) {
+  height: auto;
+}
+
+:where(button, input, textarea, select) {
+  font: inherit;
+}
+
+:where(button) {
+  border: 0;
+  background: transparent;
+}
+
+:where(button, label, summary, [role="button"], [role="tab"]) {
+  cursor: pointer;
+}
+
+:where(button:disabled, [aria-disabled="true"]) {
+  cursor: not-allowed;
+}
+
+:where(table) {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+:where([hidden]) {
+  display: none !important;
+}
+
+/* ── 1. Font stacks ───────────────────────────────────────── */
 :root {
   --ram-font-display:
-    "Fredoka", "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+    "Fredoka", "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic",
+    sans-serif;
   --ram-font-body:
-    "DM Sans", "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", system-ui, sans-serif;
-  --ram-font-mono: "JetBrains Mono", "Menlo", "Consolas", "Noto Sans JP", monospace;
+    "DM Sans", "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic",
+    system-ui, sans-serif;
+  --ram-font-mono:
+    "JetBrains Mono", "Menlo", "Consolas", "Noto Sans JP", monospace;
 
   /* Spacing (4px baseline) */
   --ram-space-0: 0px;
@@ -86,7 +150,8 @@ html.ram-light {
   --ram-glass-highlight: rgba(255, 255, 255, 0.9);
 
   --ram-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
-  --ram-shadow-hover: 0 16px 48px rgba(0, 0, 0, 0.12), 0 4px 12px rgba(0, 0, 0, 0.06);
+  --ram-shadow-hover:
+    0 16px 48px rgba(0, 0, 0, 0.12), 0 4px 12px rgba(0, 0, 0, 0.06);
   --ram-shadow-focus: 0 0 0 3px rgba(0, 0, 0, 0.07);
 
   /* Glass code background */

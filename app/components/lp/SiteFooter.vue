@@ -13,7 +13,7 @@ const year = new Date().getFullYear();
           <a href="https://github.com/tmtmNasubi" class="lp-footer__link">
             GitHub
           </a>
-          <NuxtLink to="/blog-index" class="lp-footer__link">Articles</NuxtLink>
+          <NuxtLink to="/blog" class="lp-footer__link">Articles</NuxtLink>
           <NuxtLink to="/about" class="lp-footer__link">About</NuxtLink>
         </nav>
       </div>
@@ -22,6 +22,10 @@ const year = new Date().getFullYear();
 </template>
 
 <style scoped>
+.lp-footer {
+  padding: var(--ram-space-4);
+}
+
 .lp-footer__inner {
   display: flex;
   flex-direction: column;

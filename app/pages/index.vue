@@ -1,19 +1,5 @@
 <script setup lang="ts">
-const { mode, toggle } = useRamTheme();
-
-const navLinks = [
-  { value: "home", label: "Home", href: "#top" },
-  { value: "works", label: "Works", href: "#works" },
-  { value: "articles", label: "Articles", href: "#articles" },
-  { value: "about", label: "About", href: "#about" },
-];
-
 const features = [
-  {
-    icon: "✦",
-    title: "Glass",
-    description: "半透明・反射・歪みを Web 標準で再現する表現研究。",
-  },
   {
     icon: "◇",
     title: "Design Systems",
@@ -24,7 +10,7 @@ const features = [
     icon: "✎",
     title: "Web Craft",
     description:
-      "Nuxt / Vue を中心に、パフォーマンスとアクセシビリティに配慮した実装が好きです。",
+      "Nuxt / Vue を中心に、パフォーマンスとアクセシビリティに配慮した実装を追求しています。",
   },
 ];
 
@@ -37,25 +23,19 @@ const { data: works } = await useAsyncData("lp-works", () =>
 
 const { data: articles } = await useAsyncData("lp-articles", () =>
   queryCollection("content")
-    .where("path", "LIKE", "/articles/%")
+    .where("path", "LIKE", "/blog/%")
     .order("date", "DESC")
     .limit(5)
     .all(),
 );
 
-const active = ref("home");
-const onClickNavigation = (l: string) => {
-  if (l === "#top") active.value = "home";
-  else active.value = l;
-};
-
 useSeoMeta({
   title: "nas — Designer / Engineer",
   description:
-    "Liquid Glass の研究と Ramune UI を中心に、Web の表現を探っているデザイナー兼エンジニア nas のポートフォリオサイト。",
+    "Ramune UI を中心に、Web の表現を探っているフロントエンドエンジニア nas のポートフォリオサイト。",
   ogTitle: "nas — Designer / Engineer",
   ogDescription:
-    "Liquid Glass の研究と Ramune UI を中心に、Web の表現を探っているデザイナー兼エンジニア nas のポートフォリオサイト。",
+    "Ramune UI を中心に、Web の表現を探っているフロントエンドエンジニア nas のポートフォリオサイト。",
   ogType: "website",
   ogLocale: "ja_JP",
   twitterCard: "summary_large_image",
@@ -64,18 +44,6 @@ useSeoMeta({
 
 <template>
   <main id="top" class="lp">
-    <RamTopNav
-      brand="nas.love"
-      :links="navLinks"
-      :active="active"
-      class="lp__nav"
-      @nav="onClickNavigation"
-    >
-      <RamButton variant="ghost" size="md" @click="toggle">
-        {{ mode === "light" ? "🌙 Dark" : "☀️ Light" }}
-      </RamButton>
-    </RamTopNav>
-
     <LpHeroSection />
 
     <section id="features" class="lp__section">
@@ -113,37 +81,12 @@ useSeoMeta({
       </RamGlass>
     </section>
 
-    <section id="articles" class="lp__section">
-      <RamMixedHeading eyebrow="ARTICLES" title="最新の記事" size="L" />
-      <div v-if="articles?.length" class="lp__grid lp__grid--2">
-        <LpArticleCard
-          v-for="a in articles"
-          :key="a.path"
-          :title="a.title"
-          :description="a.description"
-          :date="a.date"
-          :tags="a.tags"
-          :path="a.path"
-        />
-      </div>
-      <RamGlass v-else class="lp__empty">
-        <RamType variant="bodyM" :color="'var(--ram-muted)'">
-          記事は近日公開予定です。
-        </RamType>
-      </RamGlass>
-      <div class="lp__cta-row">
-        <RamButton as="link" to="/blog-index" variant="ghost" size="md">
-          すべての記事 →
-        </RamButton>
-      </div>
-    </section>
+    <LpArtcleSection :articles="[...articles]" />
 
     <section id="about" class="lp__section">
       <RamMixedHeading eyebrow="ABOUT" title="運営者" size="L" />
       <LpAboutSection />
     </section>
-
-    <LpSiteFooter />
   </main>
 </template>
 
@@ -202,10 +145,5 @@ useSeoMeta({
 .lp__empty {
   padding: var(--ram-space-6);
   text-align: center;
-}
-
-.lp__cta-row {
-  display: flex;
-  justify-content: flex-end;
 }
 </style>

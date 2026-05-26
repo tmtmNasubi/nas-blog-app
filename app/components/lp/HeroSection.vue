@@ -7,8 +7,8 @@ withDefaults(
   }>(),
   {
     eyebrow: "PORTFOLIO",
-    title: "ガラスの向こう側で、つくる",
-    subtitle: "Design Systems · Web Craft · Liquid Glass Study",
+    title: "ポップなUIで楽しみたい",
+    subtitle: "Design Systems · Web Craft",
   },
 );
 </script>
